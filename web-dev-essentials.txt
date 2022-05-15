@@ -343,8 +343,9 @@ git stash //Running the command will store your work temporarily for later use i
 commit the current code into the repo
   git stach pop //retrieve the stashed code
 
-
-
+SETTING UP REMOTE REPO
+git config --global user.name "Murphy" //sets your username for commits
+git config --global user.email "example@gmail.com" //sets yor email 
 
 
 ____________________________________
