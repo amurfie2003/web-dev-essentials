@@ -1,0 +1,460 @@
+______________________________________
+String Methods/properties to remember 
+_____________________________________
+toUpperCase()
+toLowerCase()
+substring() // extracts a part of a string
+startsWith() // return true or false
+endsWith()
+includes()
+trim()
+split()
+replace()
+replaceAll()
+Number.parseInt()
+.length
+
+
+_____________________________________________
+Array Methods/propeties/concepts to remember
+_____________________________________________
+.push()//add to end
+.pop()//remove last item and return item removed
+.map() //return new transformed array
+.filer() //return new array of items that passed condition
+.reduce() //reduce to single value.reducer and initial value.Array unchanged.
+.find() //return first item passed condition or undifined
+.forEach() //iterate. HAS NO RETURN STATEMENT
+.join() //turn to string
+.reverse() //reverse
+.every() //return true when all items meet condition else return false
+.some()	//return true when atleast one item statisfies condition else return false
+.splice(0 , 3) //remove from index exclusive. return removed item
+.shift()// delete from front of list
+.unshift('popcorn') //add to the front of the list
+.length //returns number of elements in the array
+
+=====QUICK CONCEPTS===================
+[...items, apple] spread array. creates new array
+const [a , b] = [] destructuring array
+undefined returned for index that does'nt exist
+myArry[0] = 'new item' will update array at that index
+for (const fruit of fruits)//iterate array for-of-loop
+======================================
+
+
+________________________________________________
+Object Methods/propeties/concepts to remember
+________________________________________________
+Object[] //dynamic key value
+Object.keys(myObject) //returns array of keys 
+Object.values(myObject) //returns array of values
+Object.entries(myObject) //return array of arrays [ [key, value] ]
+for (let creMember in crew) //iterate object key
+
+=====QUICK CONCEPTS=============================================================
+-let{a = 0 , b: c} = {} //destructuring and name reassignment and default value
+-{...{}, ...{}} //spread object.Duplicate keys exist the last overwrites first
+-return user.info?.name; //optional chaining short-circuit to undifined
+ const firstValue = data.temperatures?.[0]; //optional chaining with array value
+ const upperCasedName = person.name?.toUpperCase();//optional chaining method call
+ Optional chaining cannot be used for assignment. It's only used for reading
+-?? nullish coalescing operator
+   return user.age ?? 'unknown'; //if left is null or undifined execute right
+   const name = user.details?.name?.firstName ?? "N/A"; //combining both
+-const copy = {...{}, darkTheme: true} immutable copy and add key/value
+-const clonedUser = {...user, age: user.age + 1}; immutable copy and update age
+-[object object] error // means toString() called on object instead of string
+-use object to replace multiple if/else conditions
+================================================================================
+
+______________________________________
+Classes
+_____________________________________
+the class constructor creates an object
+internal method call with this.methodName() 
+getters and setters validate values to be set as properties on the class
+  set amount(value){
+    this._cents = value * 100;
+  }
+  get amount(){
+    return this._cents;
+  }
+use _ for internal properties
+static methods are called on the class not the instance
+static methods cannot access 'this' keyword
+  static getYear(){
+
+  }
+method chaining - must retun 'this' to work
+class inheritance (Child Extends Parent)
+method override
+Super(fName, lName, newVariable) (calls parent constructor and overides it)
+super.parentMethod() 
+constructor function and prototypes
+all instance variables are part of the class object
+#private field and method. only inside class useage. defined outside constructor
+prototypical inheritance allows you to select methods you want to inherit
+  GorillaBanana.prototype.eat = Gorilla.prototype.eat;
+  extends simulates classical inheritance by copying all methods in the prototype
+  Every object in JavaScript inherits the prototype of Object.
+______________________________________
+Promeses things to remember 
+_____________________________________
+Promises are used when doing asyncronous work
+try...catch does not work with Promises
+states: pending, resolved, rejected
+promises.then(future callback).catch(error handling)
+.finally(); //runs after .then or .catch 
+throw new Error('there was an error') inside .then block skips to .catch() block
+return new Promise( (resolve, reject) =>{ resolve(data); reject(error);});
+  must return new Promise(); when creating promise
+when you call resolve(); state changes to fulfilled .then() callbacked will execute
+when you call reject(); state changes to rejected .catch() callbacked will execute
+
+
+
+______________________________________
+JSON 
+_____________________________________
+This is a JSON string not an object it needs to be converted into an object
+  '{
+      "firstName": "Sam",
+      "lastName": "Green",
+      "age": 24
+  }'
+
+  An APi cannot receive an object or send and object it must be a JSON string.
+JSON.parse(string) //converts JSON string to JSON object
+  This function is synchronous. This means that it will block the main thread. 
+  .json() method is used by fetch() almost the same as JSON.parse().
+JSON.stringify(object) //converts an object into a JSON string
+
+
+
+_______________________________________________
+
+HTTP 
+_______________________________________________
+status responses
+1xx infomational responses
+2xx successful responses
+  -200 ok
+3xx redirects
+  -301 moved permanently
+  -302 found
+4xx client errors 
+  -401 unauthorized
+  -404 not found
+5xx server errors
+  -503 gateway timeout
+
+methods
+GET: read data
+POST: create data
+PUT: update data
+DELETE: delete data
+
+when sending a body to the api convert it to a json string.
+ body: JSON.stringify({})
+
+
+______________________________________
+Fetch API 
+_____________________________________
+fetch('url string') //will send an ajax request and return a <promise>
+resolving the <pronise> will return a generic Response object which needs to be converted into a specific format mostly json using .json() method which is non-blocking since it returns a new <promise>. Remember to return response.json()
+
+These will not work
+  const data = fetch("...").then(response => response.json());
+
+let apiData;
+fetch("...")
+.then(response => response.json())
+.then(data => {
+    apiData = data;
+});
+console.log(apiData);
+
+//You will end up getting undefined, that's because your code runs top to bottom and by the time console.log(apiData) runs, the promise is still pending. So the callback of the .then() has not run yet.
+
+fetch will fail for network errors and execute the catch block but not for error responses. For most APIs, you can check if the response was successful by reading response.ok.
+
+fetch also takes a second parameter for sending HTTP requests.
+  fetch('url string', {
+    method: 'POST',
+    headers: {
+       "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      key1: 'value1',
+      key2: 'value2'
+    })
+  })
+
+
+
+_______________________________________________
+
+ES Modules 
+_______________________________________________
+Every javascript file is called a module. Each module is seperate from other modules.
+must use this format './helpers.js' 
+  therefore file must be in the same folder.
+imports must be at the top of the file before all other code(it is synchronous)
+must use webpack or <script type="module" src="index.js"></script> for this to work
+  
+export class Helper{}
+import {Helper} from './helpers.js' //named export
+
+default export
+---------------
+  export default class Helper{} 
+  import Helper from './helpers.js'
+              OR
+  export default class Helper{}
+  import StringHelper from './helpers.js'
+with default exports you can re-name them when importing them.The '{}' are also removed when importing. A default and named export can be used in the same module.Therefore this is valid
+  import Helper, {votingAge} from "./helpers.js";
+
+It is possible but not recommended to rename a named export as follows
+  import {getDate as getDateHelper} from "./date-helpers.js"; 
+
+When importing from a liberary the name of the liberary is used not the file path 
+
+
+
+_______________________________________________
+
+JS Concepts to remember 
+_______________________________________________
+ASI applies to let/const import/export and return
+break; //used to force exit loop
+continue; //skips an iteration of the loop
+try...catch
+reference types and mutability
+  [] === []; //false
+  {} === {}; //false
+asyncronous javascript
+callbacks - passing a function definition as parameter
+
+typeof variable //returns the datatype of variable
+
+let username = '';
+let defaultName = username || 'Stranger';// short-circuit evaluation
+
+comparing same value use a switch statement
+switch('item'){
+ case 'mango':
+        console.log('mangoes are $1.50');
+        break;
+ default:
+        console.log('invalid item');
+        break;
+}
+_________________________________________________
+
+
+
+
+
+ ____________________________________
+Linux OS
+_____________________________________
+$ echo hello world (print to console)
+$ echo "Hello Command Line" >> hello_cli.txt (create a new file named hello_cli.txt and add Hello Command Line to that file)
+$ date (date)
+$ whoami (username)
+$ pwd (Print Working Directory)
+$ cd (change directory) / is root
+    cd .  (current directory). This is the directory you are currently in
+    cd .. (parent directory). Takes you to the directory above your current
+    cd ~  (home directory). This directory defaults to your “home directory” 
+            Such as /home/amurfie2003
+    cd -  (previous directory). This will take you to the previous directory you 
+            were just at
+$ ls (list directories) -a (all) -l(long) combine -la
+$ touch index.html (create new empty file/update timestamp)
+        touch home/user/index.html (create empty file at path)
+$ cat hello-cli.txt (to print the contents of the hello-cli.txt file to the terminal)
+$ mkdir new-folder (make directory in current directory)
+        mkdir home/user/new-folder (make directory atspecific path)
+$ rmdir (remove directory)
+
+TAB-KEY gives auto completion 
+UP/DOWN-KEY cycle previous comands
+
+ ____________________________________
+GIT
+_____________________________________
+git init //set up the project to be tracked by git
+
+git add <filename>//adds files from the working directory to staging area so changes will be tracked by git.
+  git add <filename> <filename> //adds both files at the sametime
+  git add . //adds all files in current directory to staging area
+
+
+git commit //changes from the staging area are permanently stored in the
+  repository
+  git commit -m "commit message"
+    Standard Conventions for Commit Messages:
+    Must be in quotation marks
+    Written in the present tense
+    Should be brief (50 characters or less) when using -m
+
+  git commit --amend // update your previous commit.It’s important to note that although it seems like --amend is simply updating the commit, what Git actually does is replace the whole previous commit so will need a new commit message.
+
+  git commit --ammend --no-edit //keeps the commit message
+
+
+git status //gives the current state of the files example untracked files 
+  this means that git sees the files but they are not being tracked must add them to staging area.
+
+git diff <filename> //this will show the difference between working directory and the staging area. 
+
+git log //This will list all the commits in chronloical order
+  In the output:
+    A 40-character code, called a SHA, that uniquely identifies the commit
+    The commit author
+    The date and time of the commit
+    The commit message
+  git log -s "keyword" //displays a list of commits that contain the keyword in the message.
+
+  git log --oneline --graph //show a graphical representation of commits
+
+
+git rm --cached <fileName> //deletes file from staging area
+
+git show HEAD //shows everything in git log for HEAD commit  plus all the file changes that were committed. The HEAD is the commit you are currently on in most cases it will be le last commit.
+
+git checkout HEAD <filename> //will restore the file in your working directory to look exactly as it did when you last made a commit. Use to undo mistakes.Must close and reopen file.
+  shortcut: git checkout -- <filename> 
+  does the exact same thing
+
+git reset HEAD <filename> //Removes the file from the staging area.
+This command resets the file in the staging area to be the same as the HEAD commit. It does not discard file changes from the working directory.
+  output:
+    Unstaged changes after reset:              
+    M       file.txt
+
+git reset <commit_SHA> //This command works by using the first 7 characters of the SHA of a previous commit. The HEAD is now set to that previous commit which will erase all commits ahead of the current HEAD position. The files are moved back to the staging area.
+
+git stash //Running the command will store your work temporarily for later use in a hidden directory. Often used when you need to switch branches but do not want to 
+commit the current code into the repo
+  git stach pop //retrieve the stashed code
+
+
+
+
+
+____________________________________
+HTML
+_____________________________________
+Attributes - key/value
+href="#myid" - link to id on page
+
+____________________________________
+CSS
+_____________________________________
+css ruleset 
+p{
+  color: blue;
+}
+css inline style
+<p style="color:blue; font-size: 20px;"></p>
+
+type/element selector 
+.class selector
+#id selector
+[src] OR img[src*='winter'] attribute selector
+
+pseudo-class 
+used for different states
+p:hover {
+        color: green
+}
+
+Specificity
+1. id
+2. Class
+3. element
+
+p {
+  color: blue;
+}
+ 
+.main p {
+  color: red;
+}  //more spefic
+
+
+
+chaining
+h1.special {
+ 
+}
+The code above would select only the <h1> elements with a class of special. If a <p> element also had a class of special, the rule in the example would not style the paragraph.
+
+Descendant Combinator
+<ul class='main-list'>
+  <li> ... </li>
+  <li> ... </li>
+  <li> ... </li>
+</ul>
+The nested <li> elements are descendants of the <ul> element and can be selected with the descendant combinator like so:
+.main-list li {
+ 
+}
+
+Multiple Selectors
+h1, 
+.menu {
+  font-family: Georgia;
+}
+
+!important
+p {
+  color: blue !important;
+}
+only used in extreme circomstances
+
+
+
+
+____________________________________
+Browser 
+_____________________________________
+about:blank //create blank page in browser
+
+____________________________________
+Node
+_____________________________________
+$node //opens the REPL
+____________________________________
+Books 
+_____________________________________
+
+Data structures & algorithms
+-----------------------------
+computer science distilled
+grokking data structures and algorithms
+Introduction to Algorithms
+
+Software Engineering & Architecture
+-----------------------------
+clean code
+Refactoring: Improving the Design of Existing Code
+The Productive Programmer
+Pragmatic Thinking and Learning
+clean architecture
+The devOps handbook
+software engineering at google
+understaing distributed systems
+
+
+Online videos in order
+__________________________
+Intro to Computer Science (by Ana Bell @ MIT) - https://bit.ly/3oHCWpq
+Programming Abstractions (by Julie Zelenski @ Stanford) - https://bit.ly/3n7WfIg
+Introduction to Algorithms (by Erik Demaine @ MIT) - https://bit.ly/2JWzd8J
+ 
