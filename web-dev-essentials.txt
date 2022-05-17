@@ -1,3 +1,87 @@
+____________________________________
+HTML
+_____________________________________
+Attributes - key/value
+href="#myid" - link to id on page
+
+____________________________________
+CSS
+_____________________________________
+css ruleset 
+p{
+  color: blue;
+}
+css inline style
+<p style="color:blue; font-size: 20px;"></p>
+
+type/element selector 
+.class selector
+#id selector
+[src] OR img[src*='winter'] attribute selector
+
+pseudo-class 
+used for different states
+p:hover {
+        color: green
+}
+
+Specificity
+1. id
+2. Class
+3. element
+
+p {
+  color: blue;
+}
+ 
+.main p {
+  color: red;
+}  //more spefic
+
+
+
+chaining
+h1.special {
+ 
+}
+The code above would select only the <h1> elements with a class of special. If a <p> element also had a class of special, the rule in the example would not style the paragraph.
+
+Descendant Combinator
+<ul class='main-list'>
+  <li> ... </li>
+  <li> ... </li>
+  <li> ... </li>
+</ul>
+The nested <li> elements are descendants of the <ul> element and can be selected with the descendant combinator like so:
+.main-list li {
+ 
+}
+
+Multiple Selectors
+h1, 
+.menu {
+  font-family: Georgia;
+}
+
+!important
+p {
+  color: blue !important;
+}
+only used in extreme circomstances
+
+
+
+
+____________________________________
+Browser 
+_____________________________________
+about:blank //create blank page in browser
+
+
+
+
+=========JAVASCRIPT==================
+
 ______________________________________
 String Methods/properties to remember 
 _____________________________________
@@ -256,10 +340,10 @@ _________________________________________________
 
 
 
-
+==================== LINUX ====================================
 
  ____________________________________
-Linux OS
+Linux command Line
 _____________________________________
 $ echo hello world (print to console)
 $ echo "Hello Command Line" >> hello_cli.txt (create a new file named hello_cli.txt and add Hello Command Line to that file)
@@ -287,6 +371,9 @@ UP/DOWN-KEY cycle previous comands
  ____________________________________
 GIT
 _____________________________________
+
+https://education.github.com/git-cheat-sheet-education.pdf //cheatsheet
+
 git init //set up the project to be tracked by git
 
 git add <filename>//adds files from the working directory to staging area so changes will be tracked by git.
@@ -343,94 +430,101 @@ git stash //Running the command will store your work temporarily for later use i
 commit the current code into the repo
   git stach pop //retrieve the stashed code
 
-SETTING UP REMOTE REPO
+SETTING UP REPO FOR PUSHING TO GITHUB
+======================================
+when creating your repo on github's website for a local repository that already exist do not create any files such as readme etc. as this will cause merging issues later, just create them locally.
+
 git config --global user.name "Murphy" //sets your username for commits
 git config --global user.email "example@gmail.com" //sets yor email 
+git remote -v //this will show the current path for remote repository
+
+Push an existing repository from the command line
+--------------------------------------------------
+1.  git remote add origin https://github.com/amurfie2003/web-dev-essentials.git
+2.  git branch -M main
+3.  git push -u origin main
+
+Git Branching & Merging
+========================
+git branch //shows all branches in the project and indicates with * which branch  you are currently on
+
+git branch new_branch //creates a new branch called new_branch. no white space
+
+git checkout new_branch //switches to the new_branch
+
+git merge new_branch //merges the changes made on the new_branch into the current branch that you are on.(example main/mater) 
+
+Merge Conflicts
+----------------
+Note that there can be merge conflicts when merging branches. This will need to be manually resolved. Git will use special markings to indicate the conflicting code
+example 
+  <<<<<<< HEAD
+  -Engage in swordfights with professional pirates
+  =======
+  -Engage in swordfights with professional pirates such as Smee. 
+  >>>>>>> fencing
+  -------------------
+  to fix delete the version you don't want to keep including all the markings and leave the version you wish to keep.
+
+git branch -d branch_name //delete branch
+git branch -D branch_name //delete branch which has not been fully merged
+
+Cloning repo
+==============
+git clone remote_location clone_name //copies a remote repo to local machine 
+  remote_location tells Git where to go to find the remote. This could be a web address, or a filepath
+  clone_name is the name you give to the directory in which Git will clone the repository.
+
+Git will give the remote address the name origin when you clone a repo
+git remote -v //list git projects remotes example output:
+  origin    /home/ccuser/workspace/curriculum/science-quizzes (fetch)
+  origin    /home/ccuser/workspace/curriculum/science-quizzes (push)
+
+git fetch //brings changes onto a remote branch. The changes are not merged into your local master branch 
+  git merge origin/master //updates your local master branch to the lates version from the remote.
+
+git push origin your_branch_name //will push your branch up to the remote where it will be reviewed and eventually merged into the master branch
+
+Git Workflow
+-------------
+1 Fetch and merge changes from the remote
+2 Create a branch to work on a new project feature
+3 Develop the feature on your branch and commit your work
+4 Fetch and merge from the remote again (in case new commits were made while you were working)
+5 Push your branch up to the remote for review
 
 
+
+
+===============SERVERSIDE===============================
+For the URL https://www.codecademy.com, “https” is the scheme, “www” is the subdomain, “codecademy” is the domain name, and “com” is the top-level domain.
 ____________________________________
-HTML
+Node.js
 _____________________________________
-Attributes - key/value
-href="#myid" - link to id on page
+node //opens the REPL
+  .editor //enter editor mode for entering multiple lines
+  require('module').builtinModules // will list the builtin modules
+  node does not contain the 'window' object
+node <myProgram.js> // node will run the program and output the result
 
-____________________________________
-CSS
-_____________________________________
-css ruleset 
-p{
-  color: blue;
-}
-css inline style
-<p style="color:blue; font-size: 20px;"></p>
-
-type/element selector 
-.class selector
-#id selector
-[src] OR img[src*='winter'] attribute selector
-
-pseudo-class 
-used for different states
-p:hover {
-        color: green
-}
-
-Specificity
-1. id
-2. Class
-3. element
-
-p {
-  color: blue;
-}
- 
-.main p {
-  color: red;
-}  //more spefic
-
-
-
-chaining
-h1.special {
- 
-}
-The code above would select only the <h1> elements with a class of special. If a <p> element also had a class of special, the rule in the example would not style the paragraph.
-
-Descendant Combinator
-<ul class='main-list'>
-  <li> ... </li>
-  <li> ... </li>
-  <li> ... </li>
-</ul>
-The nested <li> elements are descendants of the <ul> element and can be selected with the descendant combinator like so:
-.main-list li {
- 
-}
-
-Multiple Selectors
-h1, 
-.menu {
-  font-family: Georgia;
-}
-
-!important
-p {
-  color: blue !important;
-}
-only used in extreme circomstances
+console.table(array); //prints array in table format to the console
+console.assert(array.length > 5) //method writes an error message to the console
+  if the assertion is false. If the assertion is true, nothing happens.
 
 
 
 
-____________________________________
-Browser 
-_____________________________________
-about:blank //create blank page in browser
 
-____________________________________
-Node
-_____________________________________
-$node //opens the REPL
+
+
+
+
+
+
+
+================= RESOURCEES ==================
+
+
 ____________________________________
 Books 
 _____________________________________
