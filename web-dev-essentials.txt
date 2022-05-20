@@ -308,6 +308,7 @@ When importing from a liberary the name of the liberary is used not the file pat
 
 
 
+
 _______________________________________________
 
 JS Concepts to remember 
@@ -368,30 +369,33 @@ $ rmdir (remove directory)
 TAB-KEY gives auto completion 
 UP/DOWN-KEY cycle previous comands
 
- ____________________________________
-GIT
-_____________________________________
+
+                        __________________________________  
+=====================  |           GIT/GITHUB             |   ==================
+=====================  |__________________________________|   ==================
 
 https://education.github.com/git-cheat-sheet-education.pdf //cheatsheet
 
-git init //set up the project to be tracked by git
+- git init //set up the project to be tracked by git. Should be done in thhe root of the project.
 
-git add <filename>//adds files from the working directory to staging area so changes will be tracked by git.
+git add <filename>//adds the named file(s) in the working directory to staging area so changes will be tracked by git.
   git add <filename> <filename> //adds both files at the sametime
-  git add . //adds all files in current directory to staging area
+  git add . //adds all files in current directory to staging area. Be sure to have your 
+    .gitignore file set up to avoid commiting sensitive files to repo. 
 
 
-git commit //changes from the staging area are permanently stored in the
-  repository
-  git commit -m "commit message"
+git commit //Permanently stores all files in the staging area to your local repository
+  git commit -m "commit message" //gives the commit a identifying message
     Standard Conventions for Commit Messages:
-    Must be in quotation marks
-    Written in the present tense
-    Should be brief (50 characters or less) when using -m
+    -----------------------------------------
+    Written in the present tense.
+    Should be brief (50 characters or less).
+
+  git commit -a -m "message" //stages and commits files in one command.
 
   git commit --amend // update your previous commit.It’s important to note that although it seems like --amend is simply updating the commit, what Git actually does is replace the whole previous commit so will need a new commit message.
 
-  git commit --ammend --no-edit //keeps the commit message
+  git commit --amend --no-edit //keeps the commit message
 
 
 git status //gives the current state of the files example untracked files 
@@ -449,6 +453,7 @@ Git Branching & Merging
 git branch //shows all branches in the project and indicates with * which branch  you are currently on
 
 git branch new_branch //creates a new branch called new_branch. no white space
+  git checkout -b new_branch //creates new_branch and switches to it   
 
 git checkout new_branch //switches to the new_branch
 
@@ -487,13 +492,69 @@ git push origin your_branch_name //will push your branch up to the remote where 
 
 Git Workflow
 -------------
+After cloning a remote
 1 Fetch and merge changes from the remote
 2 Create a branch to work on a new project feature
 3 Develop the feature on your branch and commit your work
 4 Fetch and merge from the remote again (in case new commits were made while you were working)
 5 Push your branch up to the remote for review
 
+Deploying to GitHub Pages
+-------------------------
+https://pages.github.com/
 
+Pull Requests
+--------------
+Pull requests allow for collaborator review and feedback on proposed code changes before they are merged on the main branch.
+
+Rebase
+------
+Git rebase <branch name> //Reapplies commits on top of another base branch.
+
+Git merge: joins two or more development histories together (creating a new merge commit).
+In other words, Git merge preserves history as it happened, whereas rebase rewrites it.
+it’s imperative to understand that rebase is a destructive operation and creates new commits, which can make it complicated to track the context of any changes made.One common rule when using rebase is to only use it locally.it’s important to only use rebase on a local branch that we’re working on individually.
+
+.Git Ignore
+------------
+A .gitignore file lets Git know which files, folders, and patterns to ignore, and not track them.
+.gitignore is usually placed in the root directory of the repository
+node_modules/   ignoring an entire directory
+
+patterns
+*.html 
+ignore all files ending in .html
+
+example* 
+ignore all files starting with example
+index*
+
+!public/index.css 
+will ignore all files starting with index except for src/index.css. But, we cannot negate a file inside an ignored directory.
+
+index.[a-i]* 
+with both the square bracket and wildcard to .gitignore, we would ignore index.css and index.html but not index.js, since “j” is outside of the [a-i] range.
+
+Forking a repo
+------------------
+On gitHub click the fork button and select where in your personal gitHub repo you want to copy the project to.
+
+You can then clone the repo to your local machine as usual 
+
+Set the upstream to the original repo so it stays updated with original repo.
+  git remote add upstream https://........
+To update the forked repo use:
+  git fetch upstream
+
+GitHub Tools
+-------------
+Issues //You can list tasks and organize them into which are open and in progress
+
+GitHub CLI //llows you to directly access and. modify issues and pull requests right from your terminal!
+
+GitHub Actions // add automated tests after a pull request, trigger something after a branch is merged into main among other actions.
+
+GitHub project management
 
 
 ===============SERVERSIDE===============================
