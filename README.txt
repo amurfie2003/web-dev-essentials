@@ -5,7 +5,7 @@ JavaScript
 HTML
 CSS
 Linux OS (command line)
-Git
+Git/GitHub
 Node.js
 Browsers
-Recomemded Books
+As well as recomemded Books and resourses 

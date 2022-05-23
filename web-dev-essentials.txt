@@ -1,12 +1,22 @@
-____________________________________
-HTML
-_____________________________________
+                        __________________________________  
+=====================  |               HTML               |   ==================
+=====================  |__________________________________|   ==================
 Attributes - key/value
 href="#myid" - link to id on page
 
-____________________________________
-CSS
-_____________________________________
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+                        __________________________________  
+=====================  |               CSS                |   ==================
+=====================  |__________________________________|   ==================
 css ruleset 
 p{
   color: blue;
@@ -72,36 +82,80 @@ only used in extreme circomstances
 
 
 
-____________________________________
-Browser 
-_____________________________________
+                        __________________________________  
+=====================  |               BROWSER            |  ==================
+=====================  |__________________________________|   ==================
 about:blank //create blank page in browser
 
 
 
 
-=========JAVASCRIPT==================
 
-______________________________________
-String Methods/properties to remember 
-_____________________________________
-toUpperCase()
-toLowerCase()
+
+
+
+
+
+
+                        __________________________________  
+=====================  |               JAVASCRIPT         |   ==================
+=====================  |__________________________________|   ==================
+
+GENERAL JS Concepts to remember 
+-------------------------
+ASI applies to let/const import/export and return
+break; //used to force exit loop
+continue; //skips an iteration of the loop
+try...catch //error handling 
+reference types and mutability
+  [] === []; //false
+  {} === {}; //false
+
+callbacks - passing a function definition as parameter
+
+typeof variable //returns the datatype of variable
+
+let username = '';
+let defaultName = username || 'Stranger';// short-circuit evaluation
+
+comparing same value use a switch statement instead of if/else
+switch('item'){
+ case 'mango':
+        console.log('mangoes are $1.50');
+        break;
+ default:
+        console.log('invalid item');
+        break;
+}
+
+
+
+                        __________________________________  
+=====================  |               STRINGS            |   ==================
+=====================  |__________________________________|   ==================
+toUpperCase() //transform string to uppercase
+toLowerCase() //transform string to lowercase
 substring() // extracts a part of a string
 startsWith() // return true or false
-endsWith()
+endsWith() //returns true or false 
 includes()
-trim()
-split()
+trim() //gets rid of whitespace at the start and end of a string
+split()//Seperates a string based on the given input
 replace()
 replaceAll()
-Number.parseInt()
-.length
+Number.parseInt()//Converts a string into a number when possible
+.length //returns the length of the string
+
+Accessing String index
+----------------------
+You can access the index of a character in a string using
+string[0] //retuns the first character.
 
 
-_____________________________________________
-Array Methods/propeties/concepts to remember
-_____________________________________________
+
+                        __________________________________  
+=====================  |               ARRAYS             |   ==================
+=====================  |__________________________________|   ==================
 .push()//add to end
 .pop()//remove last item and return item removed
 .map() //return new transformed array
@@ -127,9 +181,17 @@ for (const fruit of fruits)//iterate array for-of-loop
 ======================================
 
 
-________________________________________________
-Object Methods/propeties/concepts to remember
-________________________________________________
+
+
+
+
+
+
+
+
+                        __________________________________  
+=====================  |               OBJECTS            |   ==================
+=====================  |__________________________________|   ==================
 Object[] //dynamic key value
 Object.keys(myObject) //returns array of keys 
 Object.values(myObject) //returns array of values
@@ -143,18 +205,26 @@ for (let creMember in crew) //iterate object key
  const firstValue = data.temperatures?.[0]; //optional chaining with array value
  const upperCasedName = person.name?.toUpperCase();//optional chaining method call
  Optional chaining cannot be used for assignment. It's only used for reading
--?? nullish coalescing operator
+- ?? nullish coalescing operator
    return user.age ?? 'unknown'; //if left is null or undifined execute right
    const name = user.details?.name?.firstName ?? "N/A"; //combining both
 -const copy = {...{}, darkTheme: true} immutable copy and add key/value
 -const clonedUser = {...user, age: user.age + 1}; immutable copy and update age
 -[object object] error // means toString() called on object instead of string
 -use object to replace multiple if/else conditions
-================================================================================
 
-______________________________________
-Classes
-_____________________________________
+
+
+
+
+
+
+
+
+
+                        __________________________________  
+=====================  |               CLASSES            |   ==================
+=====================  |__________________________________|   ==================
 the class constructor creates an object
 internal method call with this.methodName() 
 getters and setters validate values to be set as properties on the class
@@ -182,9 +252,15 @@ prototypical inheritance allows you to select methods you want to inherit
   GorillaBanana.prototype.eat = Gorilla.prototype.eat;
   extends simulates classical inheritance by copying all methods in the prototype
   Every object in JavaScript inherits the prototype of Object.
-______________________________________
-Promeses things to remember 
-_____________________________________
+
+
+
+
+
+
+                        __________________________________  
+=====================  |               PROMISES           |   ==================
+=====================  |__________________________________|   ==================
 Promises are used when doing asyncronous work
 try...catch does not work with Promises
 states: pending, resolved, rejected
@@ -198,9 +274,9 @@ when you call reject(); state changes to rejected .catch() callbacked will execu
 
 
 
-______________________________________
-JSON 
-_____________________________________
+                        __________________________________  
+=====================  |               JSON               |   ==================
+=====================  |__________________________________|   ==================
 This is a JSON string not an object it needs to be converted into an object
   '{
       "firstName": "Sam",
@@ -216,10 +292,9 @@ JSON.stringify(object) //converts an object into a JSON string
 
 
 
-_______________________________________________
-
-HTTP 
-_______________________________________________
+                        __________________________________  
+=====================  |               HTTP               |   ==================
+=====================  |__________________________________|   ==================
 status responses
 1xx infomational responses
 2xx successful responses
@@ -243,9 +318,9 @@ when sending a body to the api convert it to a json string.
  body: JSON.stringify({})
 
 
-______________________________________
-Fetch API 
-_____________________________________
+                        __________________________________  
+=====================  |               FETCH API          |   ==================
+=====================  |__________________________________|   ==================
 fetch('url string') //will send an ajax request and return a <promise>
 resolving the <pronise> will return a generic Response object which needs to be converted into a specific format mostly json using .json() method which is non-blocking since it returns a new <promise>. Remember to return response.json()
 
@@ -278,10 +353,9 @@ fetch also takes a second parameter for sending HTTP requests.
 
 
 
-_______________________________________________
-
-ES Modules 
-_______________________________________________
+                        __________________________________  
+=====================  |               ES MODULES         |   ==================
+=====================  |__________________________________|   ==================
 Every javascript file is called a module. Each module is seperate from other modules.
 must use this format './helpers.js' 
   therefore file must be in the same folder.
@@ -308,40 +382,395 @@ When importing from a liberary the name of the liberary is used not the file pat
 
 
 
+                        __________________________________  
+=====================  |               DOM                |   ==================
+=====================  |__________________________________|   ==================
 
-_______________________________________________
+The DOM is the HTML representation of your page which you can access & manipulate with JavaScript
 
-JS Concepts to remember 
-_______________________________________________
-ASI applies to let/const import/export and return
-break; //used to force exit loop
-continue; //skips an iteration of the loop
-try...catch
-reference types and mutability
-  [] === []; //false
-  {} === {}; //false
-asyncronous javascript
-callbacks - passing a function definition as parameter
+Selecting A Single element
+--------------------------
+- document.querySelector("your-CSS-selector-here"); 
+    Selects a single item. If there are multiple items that satisfy the CSS selector that you specified, only the first one is returned. 
+    document.getElementById('id') can be used but can only select ids
+    X getElementsByTagName() //outdated should not be ued
+    X getElementsByClassName() //outdated shold not be used
 
-typeof variable //returns the datatype of variable
+    Type selectors
+      const title = document.querySelector("h1");
 
-let username = '';
-let defaultName = username || 'Stranger';// short-circuit evaluation
+    ID selector
+      const navbar = document.querySelector("#navbar");
 
-comparing same value use a switch statement
-switch('item'){
- case 'mango':
-        console.log('mangoes are $1.50');
-        break;
- default:
-        console.log('invalid item');
-        break;
-}
-_________________________________________________
+    class selector
+      const item = document.querySelector(".item");
+
+    Descendant selector
+       const item = document.querySelector("#banner .item");
 
 
+    Attribute selector
+       document.querySelector("[disabled]");
 
-==================== LINUX ====================================
+  Assuming the following HTML:
+
+  <a href="/contact-us" class="menu-link">Contact us</a>
+  <script>
+      const incorrect = document.querySelector("a .menu-link")
+      const correct = document.querySelector("a.menu-link")
+  </script>
+
+    The first selector will not work because a .menu-link means that there is an a element and then inside of it you should find an element with class="menu-link". This is incorrect
+    This is because the a and the element that has the class="menu-link" are the same element
+    In that case, the correct selector is a.menu-link (without spaces between them)
+    Similarly, you can select an item that has several classes, for example, 
+    .menu-link.active will select the item that has both classes menu-link and active
+
+  practice selectors: 
+    https://flukeout.github.io/
+
+  document.querySelector("CSS-selector") returns an object which is an instance of HTMLElement.HTMLElement is the parent class that every single HTML element in your page inherits from. This means that every element on your page is an instance of a single class which is HTMLElement. when document.querySelector() cannot find the element you're looking for, it will return null.
+
+  .textContent
+  -------------
+  textContent will return the text, with all the HTML tags stripped out. You can use if() checks and optional chaining to handle null returns.
+   .textContent
+   
+  element.textContent = "This is the new text!"; 
+    this will change the text inside the element. HTML tags in the string will not 
+    render into HTML it will simply be plain text string. This makes it safe to accept user input as <script> tags will be text and not able to execute JS code.
+
+Selecting Multiple Elements
+---------------------------
+- document.querySelectorAll("CSS-selector");
+    While document.querySelector() might return null (when no items are found), the document.querySelectorAll() will always return a NodeList.A NodeList is a collection of DOM elements. This means that it is a variable that contains several DOM elements.The NodeList object is similar to an array, but it's not an array document.querySelectorAll() will always return a NodeList, of 0 or more DOM elements.
+
+    NodeList
+  ------------
+  A nodelist is not an array however:
+  it has a length property
+  it has indexes accessible with [0] syntax
+  you can use .forEach() method for iteration
+
+  you cannot call .filter on a node list. Calling .textContent will never work as there's no textContent property on the NodeList object. It has to be called on a single element. This is why we need to loop through the node list one by one with .forEach()
+      Convert NodeList to Array
+      -------------------------
+      const divs = document.querySelectorAll("div"); // NodeList
+      const items = [...divs]; // Array
+
+      Or, in a single line:
+        const items = [...document.querySelectorAll("div")]; // Array
+
+      You can now use array methods for example, filter all the a links that have a textContent of Login using the following code:
+
+      const links = document.querySelectorAll("a");
+      const loginLinks = [...links].filter(link => link.textContent === "Login");
+      console.log(loginLinks); // Array of 2 links that have "Login" as textContent
+
+InnerHTML
+---------
+innerHTML will return the HTML string inside of the element (it will not strip out HTML tags).
+
+  <div id="test">This is a <strong>sample text</strong></div>  
+
+      const element = document.querySelector("#test");
+      console.log(element.textContent); // "This is a sample text"
+      console.log(element.innerHTML); // "This is a <strong>sample text</strong>"
+Never use innerHTML with input coming from the user. Cross-Site Scripting (XSS) attack is possible.
+
+Emptying elements
+-----------------
+  <div id="banner">
+    <h1>Hello World</h1>
+    <p>lorem ipsum</p>
+  </div>
+  
+  const banner = document.querySelector("#banner");
+  banner.innerHTML = ""; // OR banner.textContent = "";
+  This will empty all the content inside the div with id "banner", without removing the banner itself. So in this example, it only removes the h1 and p that are inside.
+
+value
+-----
+To read the written content of an input element, you have to use value property:
+    <form>
+      <input type="email" id="email" placeholder="Enter your email">
+      <input type="submit" value="Register">
+    </form>
+
+    const email = document.querySelector("#email");
+    console.log(email.textContent); // undefined (there's no closing tag)
+    console.log(email.value); // text written in the email field
+
+    whenever you'd like to read the value written inside of an <input>, a <select>, or a <textarea> you have to access the value property.
+
+
+Element ClassList
+------------------
+The classList Object can only be accessed on one element. In the case of a node list you must loop through the list.
+
+element.classList.add(className)
+  const element = document.querySelector("#first-item");
+  element.classList.add("highlighted");
+    adds the class highlighted to the selected element.
+
+  you can add multiple classes at the sametime
+    element.classList.add("active", "highlighted", "dark");
+
+
+element.classList.remove(className)
+  const element = document.querySelector("#first-item");
+  element.classList.remove("highlighted");
+     removes the class highlighted from the selected element.
+
+  you can remove multiple classes at the sametime
+    element.classList.remove("active", "highlighted", "dark");
+
+element.classList.contains(className)
+    const box = document.querySelector("#box");
+    box.classList.contains("activated"); // true
+    box.classList.contains("highlighted"); // false
+      checks if the class is present on the element. Returns true or false.
+
+element.classList.toggle(className)
+    const box = document.querySelector("#box");
+    box.classList.toggle("activated"); // adds the class activated (because it wasn't there)
+    box.classList.toggle("activated"); // removes the class activated (because it was already added)
+    box.classList.toggle("activated"); // adds the class activated (because it wasn't there)
+
+element.classList.replace(oldClassName, newClassName)
+    instead of using the following two lines:
+
+      element.classList.remove("hidden");
+      element.classList.add("show");
+
+    you can use the following:
+
+      element.classList.replace("hidden", "show");
+
+
+
+Element get Attribute
+---------------------
+element.getAttribute(key)
+    used to get the value of a certain attribute by its key.    
+
+    <div id="banner">
+      <button disabled="disabled" id="login">Login</button>
+    </div>   
+    
+    const banner = document.querySelector("#banner");
+    banner.getAttribute("id"); // "banner"
+    banner.getAttribute("disabled"); // null (attribute not found on this element)
+
+    const button = document.querySelector("#login");
+    button.getAttribute("disabled"); // "disabled"
+
+element.removeAttribute(key)
+    used to remove an attribute.
+
+element.setAttribute(key, value)
+    used to write a new attribute (or update the value of an old one that already exists).The 2nd argument for setAttribute() is always required.
+
+element.hasAttribute(key)
+    used to check whether an attribute exists or not. The function always returns a boolean.
+
+style
+-------
+Using the DOM, you can update any CSS property from JavaScript using 
+element.style property. We do recommend that you update classes instead of styles directly when possible.It's almost the same as CSS. The only difference is that we've got to use camelCase rather than kebab case.Single-worded properties remain the same, and those that contain a dash need to be converted to camel case.
+
+change backround color
+    <div id="banner">Welcome!</div>
+    const banner = document.querySelector("#banner");
+    banner.style.backgroundColor = "red";
+
+    
+    CSS	              JavaScript
+    background-color	backgroundColor
+    color	            color
+    font-size	        fontSize
+    z-index	          zIndex
+
+
+Showing/hiding element
+You could do this in 2 ways:
+Using CSS classes that can be added/removed in JavaScript with classList.
+Using JavaScript to modify the style of the element using the style property.
+
+using the 2nd approach:
+    <div id="banner">Welcome!</div>
+
+    const banner = document.querySelector("#banner");
+
+    // hide element 
+    banner.style.display = "none";
+
+    // show element by resetting its display
+    banner.style.display = ""; //or "initial"
+
+    Note that initial is a CSS value that works on most CSS properties and means that the browser should use the initial value the element had. Examples:
+    A <div> has an initial display of block.
+    A <strong> has an initial display of inline.
+    An <img> has an initial display of inline-block.
+
+
+
+
+Removing element from the DOM
+-----------------------------
+If you'd like to remove an element from the DOM, you can use the .remove() method. 
+
+element.remove()
+    const headline = document.querySelector("#headline");
+    headline.remove();
+
+    The h1#headline will be removed from the DOM. Note that this is different than emptying the contents of an element.
+
+
+document.body
+  If you need to access the <body> element of the page, instead of finding it with querySelector, you can access it with document.body directly:
+
+
+document.documentElement
+Similarly for the <html> tag, you can access it directly with document.documentElement
+    document.documentElement.classList.add("dark-mode");
+
+
+Dataset
+--------
+ the HTML spec recommends that developers prefix their own custom attributes with data- This avoids potential conflicts with the browser and shows that this is a custom attribute. We call this a data attribute. element.dataset returns an object containing all the data- attributes on that element.
+
+    <-- This is recommended -->
+      <form id="payment-form" data-currency="EUR">
+        ...
+      </form>
+
+
+  To read this data attribute, you can access the dataset object on the element:
+  Notice that the kebab-case (user-id) was automatically converted to camelCase (userId). Also, notice that the value of data attributes is always a string.This may become challenging when reading boolean values. The "false" string is true (because it's a string that contains text).
+  const rememberMe = navbar.dataset.rememberMe === "true"; // false
+
+    const form = document.querySelector("#payment-form");
+    console.log(form.dataset); // {currency: "EUR"}
+    const currency = form.dataset.currency; // "EUR"
+
+    <form id="payment-form" data-currency="EUR" data-user-id="2">
+      ...
+    </form>
+
+    console.log(form.dataset), you will get:
+    {
+      userId: "2",
+      currency: "EUR"
+    }
+
+
+  write dataset
+  You can also update/set a value for a data attribute by assigning it to a new value.
+
+  Assuming the following HTML:
+  <div id="navbar" data-user-id="42"></div>
+
+  const navbar = document.querySelector("#navbar");
+  navbar.dataset.userId = 43;
+  navbar.dataset.rememberMe = false;
+
+  The updated DOM element will look like this:
+  <div id="navbar" data-user-id="43" data-remember-me="false"></div>
+
+
+Traversing The DOM
+-------------------
+Avoid if possible
+You should not rely a lot on these methods as changing the HTML would then break your JavaScript code. It's recommended that you add ids and classes whenever possible.
+
+element.parentElement 
+  returns the parent element of the current element
+
+  <div class="article">
+    <h1>Hello World</h1>
+    <p>Lorem ipsum</p>
+  </div>
+
+  const h1 = document.querySelector("h1");
+  console.log(h1.parentElement); // <div class="article">...</div>
+
+element.closest("CSS-selector")
+  returns the closest parent that matches the CSS-selector you specified.
+
+  <div class="main">
+    <div class="banner">
+        <h1>Hello World</h1>
+    </div>
+  </div>
+
+  const h1 = document.querySelector("h1");
+  console.log(h1.closest(".main")); // <div class="main">...</div>
+  This will look for the closest parent that matches the selector .main that will be the first div with class="main".
+
+
+Insert adjacent HTML
+--------------------
+Using innerHTML += ... to add HTML inside an element is inefficient because it recreates the entire HTML. This could also remove existing event listeners.
+Instead, when you want to add a piece of HTML, you should use the insertAdjacentHTML method. Always use backticks `` for the second argumet.This is because template strings support multiline strings whereas double quotes and single quotes don't.Another benefit of using template strings is interpolation.
+The insertAdjacentHTML method presents the same security risk as innerHTML.
+So, you should not use it if the variables you're interpolating might be coming from the user.Similarly, we've got the insertAdjacentText method that will insert text without interpreting HTML.
+
+element.insertAdjacentHTML(position, htmlString)
+  will place the htmlString without having to reconstruct the remaining HTML inside the element
+
+  Append
+    const positions = document.querySelector("#job-positions");
+    positions.insertAdjacentHTML("beforeend", `<div class="position">2015-2020</div>`);
+  This will add the html string at the end of the #job-positions element
+
+  Prepend
+    const positions = document.querySelector("#job-positions");
+    positions.insertAdjacentHTML("afterbegin", `<div class="position">2007-2009</div>`);
+  This will add the html string at the begining of the #job-positions element
+
+Array to DOM
+  const apps = ["Calculator", "Phone", "Messages"];
+  const list = document.querySelector("#apps-list");
+
+  apps.forEach(app => {
+    list.insertAdjacentHTML("beforeend", `<li>${app}</li>`);
+  });
+
+  The resulting DOM will be:
+  <ul id="apps-list">
+    <li>Calculator</li>
+    <li>Phone</li>
+    <li>Messages</li>
+  </ul>
+
+
+innerHTML vs insertAdjacentHTML
+  - Do I want to write HTML and overwrite all the previous values? If yes, then  
+    use innerHTML.
+  - Do I want to keep the previous HTML and add some HTML at the beginning or at 
+    the end? If yes, then use insertAdjacentHTML.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        _________________________________ 
+=====================  |               LINUX             |   ==================
+=====================  |_________________________________|   ==================
 
  ____________________________________
 Linux command Line
@@ -368,6 +797,15 @@ $ rmdir (remove directory)
 
 TAB-KEY gives auto completion 
 UP/DOWN-KEY cycle previous comands
+
+
+
+
+
+
+
+
+
 
 
                         __________________________________  
@@ -416,7 +854,7 @@ git log //This will list all the commits in chronloical order
 
 git rm --cached <fileName> //deletes file from staging area
 
-git show HEAD //shows everything in git log for HEAD commit  plus all the file changes that were committed. The HEAD is the commit you are currently on in most cases it will be le last commit.
+git show HEAD //shows everything in git log for HEAD commit  plus all the file changes that were committed. The HEAD is the commit you are currently on in most cases it will be last commit.
 
 git checkout HEAD <filename> //will restore the file in your working directory to look exactly as it did when you last made a commit. Use to undo mistakes.Must close and reopen file.
   shortcut: git checkout -- <filename> 
@@ -557,11 +995,18 @@ GitHub Actions // add automated tests after a pull request, trigger something af
 GitHub project management
 
 
-===============SERVERSIDE===============================
+
+
+
+
+
+
+
+                        __________________________________  
+=====================  |               NODE.JS            |   ==================
+=====================  |__________________________________|   ==================
 For the URL https://www.codecademy.com, “https” is the scheme, “www” is the subdomain, “codecademy” is the domain name, and “com” is the top-level domain.
-____________________________________
-Node.js
-_____________________________________
+
 node //opens the REPL
   .editor //enter editor mode for entering multiple lines
   require('module').builtinModules // will list the builtin modules
