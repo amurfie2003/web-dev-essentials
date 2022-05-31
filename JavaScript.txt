@@ -1,103 +1,4 @@
                         __________________________________  
-=====================  |               HTML               |   ==================
-=====================  |__________________________________|   ==================
-Attributes - key/value
-href="#myid" - link to id on page
-
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-                        __________________________________  
-=====================  |               CSS                |   ==================
-=====================  |__________________________________|   ==================
-css ruleset 
-p{
-  color: blue;
-}
-css inline style
-<p style="color:blue; font-size: 20px;"></p>
-
-type/element selector 
-.class selector
-#id selector
-[src] OR img[src*='winter'] attribute selector
-
-pseudo-class 
-used for different states
-p:hover {
-        color: green
-}
-
-Specificity
-1. id
-2. Class
-3. element
-
-p {
-  color: blue;
-}
- 
-.main p {
-  color: red;
-}  //more spefic
-
-
-
-chaining
-h1.special {
- 
-}
-The code above would select only the <h1> elements with a class of special. If a <p> element also had a class of special, the rule in the example would not style the paragraph.
-
-Descendant Combinator
-<ul class='main-list'>
-  <li> ... </li>
-  <li> ... </li>
-  <li> ... </li>
-</ul>
-The nested <li> elements are descendants of the <ul> element and can be selected with the descendant combinator like so:
-.main-list li {
- 
-}
-
-Multiple Selectors
-h1, 
-.menu {
-  font-family: Georgia;
-}
-
-!important
-p {
-  color: blue !important;
-}
-only used in extreme circomstances
-
-
-
-
-                        __________________________________  
-=====================  |               BROWSER            |  ==================
-=====================  |__________________________________|   ==================
-about:blank //create blank page in browser
-
-
-
-
-
-
-
-
-
-
-
-                        __________________________________  
 =====================  |               JAVASCRIPT         |   ==================
 =====================  |__________________________________|   ==================
 
@@ -135,7 +36,11 @@ switch('item'){
 =====================  |__________________________________|   ==================
 toUpperCase() //transform string to uppercase
 toLowerCase() //transform string to lowercase
-substring() // extracts a part of a string
+
+substring() 
+  someString.substring(indexStart, indexEnd)
+  extracts a part of a string. indexEnd is optional and is not inclusive.
+
 startsWith() // return true or false
 endsWith() //returns true or false 
 includes()
@@ -150,6 +55,9 @@ Accessing String index
 ----------------------
 You can access the index of a character in a string using
 string[0] //retuns the first character.
+
+
+
 
 
 
@@ -222,6 +130,14 @@ for (let creMember in crew) //iterate object key
 
 
 
+
+
+
+
+
+
+
+
                         __________________________________  
 =====================  |               CLASSES            |   ==================
 =====================  |__________________________________|   ==================
@@ -274,6 +190,9 @@ when you call reject(); state changes to rejected .catch() callbacked will execu
 
 
 
+
+
+
                         __________________________________  
 =====================  |               JSON               |   ==================
 =====================  |__________________________________|   ==================
@@ -316,6 +235,14 @@ DELETE: delete data
 
 when sending a body to the api convert it to a json string.
  body: JSON.stringify({})
+
+
+
+
+
+
+
+
 
 
                         __________________________________  
@@ -382,10 +309,16 @@ When importing from a liberary the name of the liberary is used not the file pat
 
 
 
+
+
+
+
+
+
+
                         __________________________________  
 =====================  |               DOM                |   ==================
 =====================  |__________________________________|   ==================
-
 The DOM is the HTML representation of your page which you can access & manipulate with JavaScript
 
 Selecting A Single element
@@ -394,7 +327,7 @@ Selecting A Single element
     Selects a single item. If there are multiple items that satisfy the CSS selector that you specified, only the first one is returned. 
     document.getElementById('id') can be used but can only select ids
     X getElementsByTagName() //outdated should not be ued
-    X getElementsByClassName() //outdated shold not be used
+    X getElementsByClassName() //outdated should not be used
 
     Type selectors
       const title = document.querySelector("h1");
@@ -437,8 +370,7 @@ Selecting A Single element
    .textContent
    
   element.textContent = "This is the new text!"; 
-    this will change the text inside the element. HTML tags in the string will not 
-    render into HTML it will simply be plain text string. This makes it safe to accept user input as <script> tags will be text and not able to execute JS code.
+    this will change the text inside the element. HTML tags in the string will not render into HTML it will simply be plain text string. This makes it safe to accept user input as <script> tags will be text and not able to execute JS code.
 
 Selecting Multiple Elements
 ---------------------------
@@ -452,7 +384,8 @@ Selecting Multiple Elements
   it has indexes accessible with [0] syntax
   you can use .forEach() method for iteration
 
-  you cannot call .filter on a node list. Calling .textContent will never work as there's no textContent property on the NodeList object. It has to be called on a single element. This is why we need to loop through the node list one by one with .forEach()
+  you cannot call .filter on a node list. Calling .textContent will also never work as there's no textContent property on the NodeList object. It has to be called on a single element. This is why we need to loop through the node list one by one with .forEach()
+
       Convert NodeList to Array
       -------------------------
       const divs = document.querySelectorAll("div"); // NodeList
@@ -577,7 +510,7 @@ element.hasAttribute(key)
 style
 -------
 Using the DOM, you can update any CSS property from JavaScript using 
-element.style property. We do recommend that you update classes instead of styles directly when possible.It's almost the same as CSS. The only difference is that we've got to use camelCase rather than kebab case.Single-worded properties remain the same, and those that contain a dash need to be converted to camel case.
+element.style.property. We do recommend that you update classes instead of styles directly when possible.It's almost the same as CSS. The only difference is that we've got to use camelCase rather than kebab case. Single-worded properties remain the same, and those that contain a dash need to be converted to camel case.
 
 change backround color
     <div id="banner">Welcome!</div>
@@ -666,6 +599,7 @@ Dataset
 
 
   write dataset
+  --------------
   You can also update/set a value for a data attribute by assigning it to a new value.
 
   Assuming the following HTML:
@@ -752,310 +686,270 @@ innerHTML vs insertAdjacentHTML
     the end? If yes, then use insertAdjacentHTML.
 
 
+Creating elements imperatively
+-------------------------------
+Instead of writing the html String <p class="text-center">Hello World</p>, you can construct it with the document.createElement() method:
+
+  const paragraph = document.createElement("p");
+  paragraph.classList.add("text-center");
+  paragraph.textContent = "Hello World";
+  console.log(paragraph); // <p class="text-center">Hello World</p> (as an element not as a string)
+
+  You can then use the element.appendChild() method to append it somewhere in the DOM. For example:
+
+  document.body.appendChild(paragraph);
+
+
+Add Event Listener
+-------------------
+element.addEventListener(eventType, callback)
+  allows you to wait for an event to happen on an element. Once that event occurs the callback function will execute. Your code is running top to bottom, however, the event listener callback is scheduled into the future (when the user clicks on the button)
+
+
+Event Details
+--------------
+The event details contains information about the event that has just occurred. For example, for a click event: 
+  x, y cordinate where the click occured 
+  currentTarget etc.
+
+  button.addEventListener("click", event => {
+    console.log(event); // details of the click event
+  });
+
+  Event currentTarget
+  The event.currentTarget refers to the element to which the event listener has been attached.If you log event to the browser console, you will see that currentTarget is null. The currentTarget is only available when the event is triggered but you won't be able to read its value later on in the dev tool console.This does not affect your code, you can still use event.currentTarget as long as you use it inside the event callback.
+
+    button.addEventListener("click", event => {
+      console.log(event.currentTarget); // same as the variable 'button'
+    });
+
+     debugger; // pause execution so that we can see event.currentTarget in the dev tools
+
+    Always use currentTarget and not event.target
+    ----------------------------------------------
+    <button>
+      Hello <strong>world</strong>
+    </button>
+
+    const button = document.querySelector("button");
+
+    button.addEventListener("click", event => {
+      console.log(event.target); // not recommended
+    });
+    The event.target here might return either the <button> element or the <strong> element, depending on where the user clicks inside the button. While this can be useful in some scenarios when building User Interface libraries, you will rarely ever need it. This is why you should stick to event.currentTarget. In this example, it'll always return the <button> no matter where the user has clicked inside that button.
+  
+  multiple Elements
+  -----------------
+  You can use button instead of event.currentTarget. This is true in this example, but, sometimes you may not have access to the button variable, which is why we prefer that you always use event.currentTarget since it always works!
+    
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", event => {
+        console.log(event.currentTarget); // the <button> that was clicked
+      });
+    });
+
+
+Removing Event Listener
+------------------------
+To remove an event listner you must provide the eventType and the callback function that was used when the event listner was added, therefore you cannot use
+an anonymous function. You should not add the () here because you do not want to call handleClick right now, but, instead, reference it.
+
+  const button = document.querySelector("button");
+
+  const handleClick = () => {
+    console.log("button clicked");    
+  }
+
+  button.addEventListener("click", handleClick);
+
+  button.removeEventListener("click", handleClick);
+
+
+Once event listener
+--------------------
+You can add an event listner that only runs once by adding a third argument to the function signature:
+
+  const button = document.querySelector("button");
+
+  button.addEventListener("click", () => {
+      console.log("button clicked");
+  }, {
+      once: true
+  });
+
+Focus/Blur event listeners
+--------------------------
+The focus and blur events are often used in form validation. They let you know when a user focuses (put the cursor inside of it) on a textbox and when they remove the focus (blur).
+
+  <input type="text" id="name" placeholder="Enter your name">
+
+  const name = document.querySelector("#name");
+
+  name.addEventListener("focus", () => {
+      console.log("user focused inside the name");
+  });
+
+  name.addEventListener("blur", () => {
+      console.log("user removed focus from the name");
+  });
 
 
 
+DOMContentLoaded
+-----------------
+This event fires on the document element only. It signifies that the HTML has been loaded successfully by the browser.
+This means that the browser has finished reading all of the content of your HTML file. It doesn't mean however that images and other assets have finished loading.
+This event used to be quite popular a few years ago, but nowadays, you can place your <script> at the end of the page (right before the closing tag of the body) and you won't have to worry about waiting until the DOM is ready.
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM is ready");
+});
+
+Scroll
+-------
+The scroll event triggers on any element that scrolls. It is often used on the window object.However, adding a scroll event will most likely slow down your page. Its usage is discouraged.
 
 
+window.addEventListener("scroll", () => {
+    console.log("page scrolled");
+});
+
+change
+------
+The change event is often used on the <select> element. It lets you know when the user has selected a new choice.
+
+  <select id="countries">
+    <option value="">Select a country</option>
+    <option value="NL">Netherlands</option>
+    <option value="BR">Brazil</option>
+  </select>
+
+  const countries = document.querySelector("#countries");
+
+  countries.addEventListener("change", () => {
+    console.log(countries.value);
+  });
 
 
+keydown/keyup
+------------- 
+The keydown and keyup events are used to know when the user has typed a character on the keyboard. These can be used to implement keyboard shortcuts.
+The only difference between keydown and keyup is that keydown triggers while the user starts pressing the button and before the character is being typed. On the other hand, keyup fires after the character has been typed. For most scenarios, you end up needing keyup.Notice that we can know which character was pressed by reading the event.key.
 
 
+  document.addEventListener("keydown", event => {
+    console.log(event.key);
+  });
 
+  document.addEventListener("keyup", event => {
+    console.log(event.key);
+  });
+
+                        _________________________________ 
+=====================  |               FORMS             |   ==================
+=====================  |_________________________________|   ==================
+A <form> element groups several inputs together and separates multiple forms on a web page.
+
+Requirements for the "submit" event
+------------------------------------
+  have a form element
+  have at least 1 input or textarea inside of the form
+  have a button with type="submit"
+  The button could either be an <input type="submit" value="..."> or a <button type="submit">...</button>.
+
+Listening for the submit event
+-------------------------------
+The addEventListener has to be on the <form>
+
+  <form id="address-form">
+    <input type="text" placeholder="Enter your address">
+    <input type="submit" value="Save">
+  </form>
+
+  const form = document.querySelector("#address-form");
+
+  form.addEventListener("submit", event => {
+      // event callback (when the form is submitted)
+  });
+
+
+Prevent default
+----------------
+When you submit a form, the browser will take all the values your user has written and send them to the backend of your website. However, this causes the whole page to be reloaded. That's because the browser will send the data to the same URL by default unless you specify the form's action attribute.As long as you add a submit event listener to a form, then you will need to prevent the default, or else your code will not run as the page will reload.
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    // the form will not reload anymore
+  });
+
+
+User input for form submission
+-------------------------------
+Always make sure to access the value property inside the submit event to get the value when the user submitted the form. DO NOT access it outside the submit event 
+as the value will be empty or incomplete.You want to get the value on submision.
+
+  <form id="weather-form">
+    <input type="text" id="city" placeholder="Enter your city">
+    <input type="submit" value="Show weather">
+  </form>
+
+  const form = document.querySelector("#weather-form");
+  const city = document.querySelector("#city");
+
+  form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      // read the user's city and pass it to getWeatherInfo()
+      console.log(city.value); // see in the console to make sure it's working
+      getWeatherInfo(city.value);
+  });
 
 
 
 
                         _________________________________ 
-=====================  |               LINUX             |   ==================
+=====================  |               DOM & FETCH       |   ==================
 =====================  |_________________________________|   ==================
 
- ____________________________________
-Linux command Line
-_____________________________________
-$ echo hello world (print to console)
-$ echo "Hello Command Line" >> hello_cli.txt (create a new file named hello_cli.txt and add Hello Command Line to that file)
-$ date (date)
-$ whoami (username)
-$ pwd (Print Working Directory)
-$ cd (change directory) / is root
-    cd .  (current directory). This is the directory you are currently in
-    cd .. (parent directory). Takes you to the directory above your current
-    cd ~  (home directory). This directory defaults to your “home directory” 
-            Such as /home/amurfie2003
-    cd -  (previous directory). This will take you to the previous directory you 
-            were just at
-$ ls (list directories) -a (all) -l(long) combine -la
-$ touch index.html (create new empty file/update timestamp)
-        touch home/user/index.html (create empty file at path)
-$ cat hello-cli.txt (to print the contents of the hello-cli.txt file to the terminal)
-$ mkdir new-folder (make directory in current directory)
-        mkdir home/user/new-folder (make directory atspecific path)
-$ rmdir (remove directory)
-
-TAB-KEY gives auto completion 
-UP/DOWN-KEY cycle previous comands
-
-
-
-
-
-
-
-
-
-
-
-                        __________________________________  
-=====================  |           GIT/GITHUB             |   ==================
-=====================  |__________________________________|   ==================
-
-https://education.github.com/git-cheat-sheet-education.pdf //cheatsheet
-
-- git init //set up the project to be tracked by git. Should be done in thhe root of the project.
-
-git add <filename>//adds the named file(s) in the working directory to staging area so changes will be tracked by git.
-  git add <filename> <filename> //adds both files at the sametime
-  git add . //adds all files in current directory to staging area. Be sure to have your 
-    .gitignore file set up to avoid commiting sensitive files to repo. 
-
-
-git commit //Permanently stores all files in the staging area to your local repository
-  git commit -m "commit message" //gives the commit a identifying message
-    Standard Conventions for Commit Messages:
-    -----------------------------------------
-    Written in the present tense.
-    Should be brief (50 characters or less).
-
-  git commit -a -m "message" //stages and commits files in one command.
-
-  git commit --amend // update your previous commit.It’s important to note that although it seems like --amend is simply updating the commit, what Git actually does is replace the whole previous commit so will need a new commit message.
-
-  git commit --amend --no-edit //keeps the commit message
-
-
-git status //gives the current state of the files example untracked files 
-  this means that git sees the files but they are not being tracked must add them to staging area.
-
-git diff <filename> //this will show the difference between working directory and the staging area. 
-
-git log //This will list all the commits in chronloical order
-  In the output:
-    A 40-character code, called a SHA, that uniquely identifies the commit
-    The commit author
-    The date and time of the commit
-    The commit message
-  git log -s "keyword" //displays a list of commits that contain the keyword in the message.
-
-  git log --oneline --graph //show a graphical representation of commits
-
-
-git rm --cached <fileName> //deletes file from staging area
-
-git show HEAD //shows everything in git log for HEAD commit  plus all the file changes that were committed. The HEAD is the commit you are currently on in most cases it will be last commit.
-
-git checkout HEAD <filename> //will restore the file in your working directory to look exactly as it did when you last made a commit. Use to undo mistakes.Must close and reopen file.
-  shortcut: git checkout -- <filename> 
-  does the exact same thing
-
-git reset HEAD <filename> //Removes the file from the staging area.
-This command resets the file in the staging area to be the same as the HEAD commit. It does not discard file changes from the working directory.
-  output:
-    Unstaged changes after reset:              
-    M       file.txt
-
-git reset <commit_SHA> //This command works by using the first 7 characters of the SHA of a previous commit. The HEAD is now set to that previous commit which will erase all commits ahead of the current HEAD position. The files are moved back to the staging area.
-
-git stash //Running the command will store your work temporarily for later use in a hidden directory. Often used when you need to switch branches but do not want to 
-commit the current code into the repo
-  git stach pop //retrieve the stashed code
-
-SETTING UP REPO FOR PUSHING TO GITHUB
-======================================
-when creating your repo on github's website for a local repository that already exist do not create any files such as readme etc. as this will cause merging issues later, just create them locally.
-
-git config --global user.name "Murphy" //sets your username for commits
-git config --global user.email "example@gmail.com" //sets yor email 
-git remote -v //this will show the current path for remote repository
-
-Push an existing repository from the command line
---------------------------------------------------
-1.  git remote add origin https://github.com/amurfie2003/web-dev-essentials.git
-2.  git branch -M main
-3.  git push -u origin main
-
-Git Branching & Merging
-========================
-git branch //shows all branches in the project and indicates with * which branch  you are currently on
-
-git branch new_branch //creates a new branch called new_branch. no white space
-  git checkout -b new_branch //creates new_branch and switches to it   
-
-git checkout new_branch //switches to the new_branch
-
-git merge new_branch //merges the changes made on the new_branch into the current branch that you are on.(example main/mater) 
-
-Merge Conflicts
-----------------
-Note that there can be merge conflicts when merging branches. This will need to be manually resolved. Git will use special markings to indicate the conflicting code
-example 
-  <<<<<<< HEAD
-  -Engage in swordfights with professional pirates
-  =======
-  -Engage in swordfights with professional pirates such as Smee. 
-  >>>>>>> fencing
-  -------------------
-  to fix delete the version you don't want to keep including all the markings and leave the version you wish to keep.
-
-git branch -d branch_name //delete branch
-git branch -D branch_name //delete branch which has not been fully merged
-
-Cloning repo
-==============
-git clone remote_location clone_name //copies a remote repo to local machine 
-  remote_location tells Git where to go to find the remote. This could be a web address, or a filepath
-  clone_name is the name you give to the directory in which Git will clone the repository.
-
-Git will give the remote address the name origin when you clone a repo
-git remote -v //list git projects remotes example output:
-  origin    /home/ccuser/workspace/curriculum/science-quizzes (fetch)
-  origin    /home/ccuser/workspace/curriculum/science-quizzes (push)
-
-git fetch //brings changes onto a remote branch. The changes are not merged into your local master branch 
-  git merge origin/master //updates your local master branch to the lates version from the remote.
-
-git push origin your_branch_name //will push your branch up to the remote where it will be reviewed and eventually merged into the master branch
-
-Git Workflow
--------------
-After cloning a remote
-1 Fetch and merge changes from the remote
-2 Create a branch to work on a new project feature
-3 Develop the feature on your branch and commit your work
-4 Fetch and merge from the remote again (in case new commits were made while you were working)
-5 Push your branch up to the remote for review
-
-Deploying to GitHub Pages
--------------------------
-https://pages.github.com/
-
-Pull Requests
+Fetch on click
 --------------
-Pull requests allow for collaborator review and feedback on proposed code changes before they are merged on the main branch.
+  <button id="button">Get data</button>
+  <div id="result"></div>
 
-Rebase
-------
-Git rebase <branch name> //Reapplies commits on top of another base branch.
+  const button = document.querySelector("#button");
+  const result = document.querySelector("#result");
+  const API = new FetchWrapper("https://jsdemo-3f387-default-rtdb.europe-west1.firebasedatabase.app");
 
-Git merge: joins two or more development histories together (creating a new merge commit).
-In other words, Git merge preserves history as it happened, whereas rebase rewrites it.
-it’s imperative to understand that rebase is a destructive operation and creates new commits, which can make it complicated to track the context of any changes made.One common rule when using rebase is to only use it locally.it’s important to only use rebase on a local branch that we’re working on individually.
+  button.addEventListener("click", () => {
+      // make a fetch request on click
+      API.get("/notifications/new.json").then(data => {
+          console.log(data);
+          result.textContent = data.message;
+      });
+  });
 
-.Git Ignore
-------------
-A .gitignore file lets Git know which files, folders, and patterns to ignore, and not track them.
-.gitignore is usually placed in the root directory of the repository
-node_modules/   ignoring an entire directory
+Fetch on submit
+----------------
+  <form id="form">
+    <input type="text" id="input" />
+    <input type="submit" />
+  </form>
 
-patterns
-*.html 
-ignore all files ending in .html
+  const form = document.querySelector("#form");
+  const input = document.querySelector("#input");
+  const API = new FetchWrapper("https://api.learnjavascript.online");
 
-example* 
-ignore all files starting with example
-index*
+  form.addEventListener("submit", event => {
+      event.preventDefault();
 
-!public/index.css 
-will ignore all files starting with index except for src/index.css. But, we cannot negate a file inside an ignored directory.
-
-index.[a-i]* 
-with both the square bracket and wildcard to .gitignore, we would ignore index.css and index.html but not index.js, since “j” is outside of the [a-i] range.
-
-Forking a repo
-------------------
-On gitHub click the fork button and select where in your personal gitHub repo you want to copy the project to.
-
-You can then clone the repo to your local machine as usual 
-
-Set the upstream to the original repo so it stays updated with original repo.
-  git remote add upstream https://........
-To update the forked repo use:
-  git fetch upstream
-
-GitHub Tools
--------------
-Issues //You can list tasks and organize them into which are open and in progress
-
-GitHub CLI //llows you to directly access and. modify issues and pull requests right from your terminal!
-
-GitHub Actions // add automated tests after a pull request, trigger something after a branch is merged into main among other actions.
-
-GitHub project management
+      API.put("/demo/grades.json", {
+          grade: input.value
+      }).then(data => {
+          console.log(data);
+      });
+  });
 
 
-
-
-
-
-
-
-
-                        __________________________________  
-=====================  |               NODE.JS            |   ==================
-=====================  |__________________________________|   ==================
-For the URL https://www.codecademy.com, “https” is the scheme, “www” is the subdomain, “codecademy” is the domain name, and “com” is the top-level domain.
-
-node //opens the REPL
-  .editor //enter editor mode for entering multiple lines
-  require('module').builtinModules // will list the builtin modules
-  node does not contain the 'window' object
-node <myProgram.js> // node will run the program and output the result
-
-console.table(array); //prints array in table format to the console
-console.assert(array.length > 5) //method writes an error message to the console
-  if the assertion is false. If the assertion is true, nothing happens.
-
-
-
-
-
-
-
-
-
-
-
-
-================= RESOURCEES ==================
-
-
-____________________________________
-Books 
-_____________________________________
-
-Data structures & algorithms
------------------------------
-computer science distilled
-grokking data structures and algorithms
-Introduction to Algorithms
-
-Software Engineering & Architecture
------------------------------
-clean code
-Refactoring: Improving the Design of Existing Code
-The Productive Programmer
-Pragmatic Thinking and Learning
-clean architecture
-The devOps handbook
-software engineering at google
-understaing distributed systems
-
-
-Online videos in order
-__________________________
-Intro to Computer Science (by Ana Bell @ MIT) - https://bit.ly/3oHCWpq
-Programming Abstractions (by Julie Zelenski @ Stanford) - https://bit.ly/3n7WfIg
-Introduction to Algorithms (by Erik Demaine @ MIT) - https://bit.ly/2JWzd8J
- 

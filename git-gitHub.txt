@@ -1,0 +1,202 @@
+                        __________________________________  
+=====================  |           GIT/GITHUB             |   ==================
+=====================  |__________________________________|   ==================
+
+https://education.github.com/git-cheat-sheet-education.pdf //cheatsheet
+
+- git init //set up the project to be tracked by git. Should be done in thhe root of the project.
+
+git add <filename>//adds the named file(s) in the working directory to staging area so changes will be tracked by git.
+  git add <filename> <filename> //adds both files at the sametime
+  git add . //adds all files in current directory to staging area. Be sure to have your 
+    .gitignore file set up to avoid commiting sensitive files to repo. 
+
+
+git commit //Permanently stores all files in the staging area to your local repository
+  git commit -m "commit message" //gives the commit a identifying message
+    Standard Conventions for Commit Messages:
+    -----------------------------------------
+    Written in the present tense.
+    Should be brief (50 characters or less).
+
+  git commit -a -m "message" //stages and commits files in one command.
+
+  git commit --amend // update your previous commit.It’s important to note that although it seems like --amend is simply updating the commit, what Git actually does is replace the whole previous commit so will need a new commit message.
+
+  git commit --amend --no-edit //keeps the commit message
+
+
+git status //gives the current state of the files example untracked files 
+  this means that git sees the files but they are not being tracked must add them to staging area.
+
+git diff <filename> //this will show the difference between working directory and the staging area. 
+
+git log //This will list all the commits in chronloical order
+  In the output:
+    A 40-character code, called a SHA, that uniquely identifies the commit
+    The commit author
+    The date and time of the commit
+    The commit message
+  git log -s "keyword" //displays a list of commits that contain the keyword in the message.
+
+  git log --oneline --graph //show a graphical representation of commits
+
+
+git rm --cached <fileName> //deletes file from staging area
+
+git show HEAD //shows everything in git log for HEAD commit  plus all the file changes that were committed. The HEAD is the commit you are currently on in most cases it will be last commit.
+
+git checkout HEAD <filename> //will restore the file in your working directory to look exactly as it did when you last made a commit. Use to undo mistakes.Must close and reopen file.
+  shortcut: git checkout -- <filename> 
+  does the exact same thing
+
+git reset HEAD <filename> //Removes the file from the staging area.
+This command resets the file in the staging area to be the same as the HEAD commit. It does not discard file changes from the working directory.
+  output:
+    Unstaged changes after reset:              
+    M       file.txt
+
+git reset <commit_SHA> //This command works by using the first 7 characters of the SHA of a previous commit. The HEAD is now set to that previous commit which will erase all commits ahead of the current HEAD position. The files are moved back to the staging area.
+
+git stash //Running the command will store your work temporarily for later use in a hidden directory. Often used when you need to switch branches but do not want to 
+commit the current code into the repo
+  git stach pop //retrieve the stashed code
+
+SETTING UP REPO FOR PUSHING TO GITHUB
+======================================
+when creating your repo on github's website for a local repository that already exist do not create any files such as readme etc. as this will cause merging issues later, just create them locally.
+
+git config --global user.name "Murphy" //sets your username for commits
+git config --global user.email "example@gmail.com" //sets yor email 
+git remote -v //this will show the current path for remote repository
+
+Push an existing repository from the command line
+--------------------------------------------------
+1.  git remote add origin https://github.com/amurfie2003/web-dev-essentials.git
+2.  git branch -M main
+3.  git push -u origin main
+
+Git Branching & Merging
+========================
+git branch //shows all branches in the project and indicates with * which branch  you are currently on
+
+git branch new_branch //creates a new branch called new_branch. no white space
+  git checkout -b new_branch //creates new_branch and switches to it   
+
+git checkout new_branch //switches to the new_branch
+
+git merge new_branch //merges the changes made on the new_branch into the current branch that you are on.(example main/mater) 
+
+Merge Conflicts
+----------------
+Note that there can be merge conflicts when merging branches. This will need to be manually resolved. Git will use special markings to indicate the conflicting code
+example 
+  <<<<<<< HEAD
+  -Engage in swordfights with professional pirates
+  =======
+  -Engage in swordfights with professional pirates such as Smee. 
+  >>>>>>> fencing
+  -------------------
+  to fix delete the version you don't want to keep including all the markings and leave the version you wish to keep.
+
+git branch -d branch_name //delete branch
+git branch -D branch_name //delete branch which has not been fully merged
+
+Cloning repo
+==============
+git clone remote_location clone_name //copies a remote repo to local machine 
+  remote_location tells Git where to go to find the remote. This could be a web address, or a filepath
+  clone_name is the name you give to the directory in which Git will clone the repository.
+
+Git will give the remote address the name origin when you clone a repo
+git remote -v //list git projects remotes example output:
+  origin    /home/ccuser/workspace/curriculum/science-quizzes (fetch)
+  origin    /home/ccuser/workspace/curriculum/science-quizzes (push)
+
+git fetch //brings changes onto a remote branch. The changes are not merged into your local master branch 
+  git merge origin/master //updates your local master branch to the lates version from the remote.
+
+git push origin your_branch_name //will push your branch up to the remote where it will be reviewed and eventually merged into the master branch
+
+Git Workflow
+-------------
+After cloning a remote
+1 Fetch and merge changes from the remote
+2 Create a branch to work on a new project feature
+3 Develop the feature on your branch and commit your work
+4 Fetch and merge from the remote again (in case new commits were made while you were working)
+5 Push your branch up to the remote for review
+
+Deploying to GitHub Pages
+-------------------------
+https://pages.github.com/
+
+Pull Requests
+--------------
+Pull requests allow for collaborator review and feedback on proposed code changes before they are merged on the main branch.
+
+Rebase
+------
+Git rebase <branch name> //Reapplies commits on top of another base branch.
+
+Git merge: joins two or more development histories together (creating a new merge commit).
+In other words, Git merge preserves history as it happened, whereas rebase rewrites it.
+it’s imperative to understand that rebase is a destructive operation and creates new commits, which can make it complicated to track the context of any changes made.One common rule when using rebase is to only use it locally.it’s important to only use rebase on a local branch that we’re working on individually.
+
+.Git Ignore
+------------
+A .gitignore file lets Git know which files, folders, and patterns to ignore, and not track them.
+.gitignore is usually placed in the root directory of the repository
+node_modules/   ignoring an entire directory
+
+patterns
+*.html 
+ignore all files ending in .html
+
+example* 
+ignore all files starting with example
+index*
+
+!public/index.css 
+will ignore all files starting with index except for src/index.css. But, we cannot negate a file inside an ignored directory.
+
+index.[a-i]* 
+with both the square bracket and wildcard to .gitignore, we would ignore index.css and index.html but not index.js, since “j” is outside of the [a-i] range.
+
+Forking a repo
+------------------
+On gitHub click the fork button and select where in your personal gitHub repo you want to copy the project to.
+
+You can then clone the repo to your local machine as usual 
+
+Set the upstream to the original repo so it stays updated with original repo.
+  git remote add upstream https://........
+To update the forked repo use:
+  git fetch upstream
+
+GitHub Tools
+-------------
+Issues //You can list tasks and organize them into which are open and in progress
+
+GitHub CLI //llows you to directly access and. modify issues and pull requests right from your terminal!
+
+GitHub Actions // add automated tests after a pull request, trigger something after a branch is merged into main among other actions.
+
+GitHub project management
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

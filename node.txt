@@ -1,0 +1,14 @@
+                        __________________________________  
+=====================  |               NODE.JS            |   ==================
+=====================  |__________________________________|   ==================
+For the URL https://www.codecademy.com, “https” is the scheme, “www” is the subdomain, “codecademy” is the domain name, and “com” is the top-level domain.
+
+node //opens the REPL
+  .editor //enter editor mode for entering multiple lines
+  require('module').builtinModules // will list the builtin modules
+  node does not contain the 'window' object
+node <myProgram.js> // node will run the program and output the result
+
+console.table(array); //prints array in table format to the console
+console.assert(array.length > 5) //method writes an error message to the console
+  if the assertion is false. If the assertion is true, nothing happens.

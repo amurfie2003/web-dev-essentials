@@ -1,0 +1,30 @@
+                        _________________________________ 
+=====================  |               LINUX             |   ==================
+=====================  |_________________________________|   ==================
+
+ ____________________________________
+Linux command Line
+_____________________________________
+$ echo hello world (print to console)
+$ echo "Hello Command Line" >> hello_cli.txt (create a new file named hello_cli.txt and add Hello Command Line to that file)
+$ date (date)
+$ whoami (username)
+$ pwd (Print Working Directory)
+$ cd (change directory) / is root
+    cd .  (current directory). This is the directory you are currently in
+    cd .. (parent directory). Takes you to the directory above your current
+    cd ~  (home directory). This directory defaults to your “home directory” 
+            Such as /home/amurfie2003
+    cd -  (previous directory). This will take you to the previous directory you 
+            were just at
+$ ls (list directories) -a (all) -l(long) combine -la
+$ touch index.html (create new empty file/update timestamp)
+        touch home/user/index.html (create empty file at path)
+$ cat hello-cli.txt (to print the contents of the hello-cli.txt file to the terminal)
+$ mkdir new-folder (make directory in current directory)
+        mkdir home/user/new-folder (make directory atspecific path)
+$ rmdir (remove directory)
+
+TAB-KEY gives auto completion 
+UP/DOWN-KEY cycle previous comands
+

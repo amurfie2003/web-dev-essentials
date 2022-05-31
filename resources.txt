@@ -1,0 +1,31 @@
+                        __________________________________  
+=====================  |             RESOURCES            |   ==================
+=====================  |__________________________________|   ==================
+____________________________________
+Books 
+_____________________________________
+
+Data structures & algorithms
+-----------------------------
+computer science distilled
+grokking data structures and algorithms
+Introduction to Algorithms
+
+Software Engineering & Architecture
+-----------------------------
+clean code
+Refactoring: Improving the Design of Existing Code
+The Productive Programmer
+Pragmatic Thinking and Learning
+clean architecture
+The devOps handbook
+software engineering at google
+understaing distributed systems
+
+
+Online videos in order
+__________________________
+Intro to Computer Science (by Ana Bell @ MIT) - https://bit.ly/3oHCWpq
+Programming Abstractions (by Julie Zelenski @ Stanford) - https://bit.ly/3n7WfIg
+Introduction to Algorithms (by Erik Demaine @ MIT) - https://bit.ly/2JWzd8J
+ 

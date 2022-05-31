@@ -1,0 +1,80 @@
+                        __________________________________  
+=====================  |               HTML               |   ==================
+=====================  |__________________________________|   ==================
+Attributes - key/value
+href="#myid" - link to id on page
+
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+                        __________________________________  
+=====================  |               CSS                |   ==================
+=====================  |__________________________________|   ==================
+css ruleset 
+p{
+  color: blue;
+}
+css inline style
+<p style="color:blue; font-size: 20px;"></p>
+
+type/element selector 
+.class selector
+#id selector
+[src] OR img[src*='winter'] attribute selector
+
+pseudo-class 
+used for different states
+p:hover {
+        color: green
+}
+
+Specificity
+1. id
+2. Class
+3. element
+
+p {
+  color: blue;
+}
+ 
+.main p {
+  color: red;
+}  //more spefic
+
+
+
+chaining
+h1.special {
+ 
+}
+The code above would select only the <h1> elements with a class of special. If a <p> element also had a class of special, the rule in the example would not style the paragraph.
+
+Descendant Combinator
+<ul class='main-list'>
+  <li> ... </li>
+  <li> ... </li>
+  <li> ... </li>
+</ul>
+The nested <li> elements are descendants of the <ul> element and can be selected with the descendant combinator like so:
+.main-list li {
+ 
+}
+
+Multiple Selectors
+h1, 
+.menu {
+  font-family: Georgia;
+}
+
+!important
+p {
+  color: blue !important;
+}
+only used in extreme circomstances
