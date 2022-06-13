@@ -28,4 +28,10 @@ __________________________
 Intro to Computer Science (by Ana Bell @ MIT) - https://bit.ly/3oHCWpq
 Programming Abstractions (by Julie Zelenski @ Stanford) - https://bit.ly/3n7WfIg
 Introduction to Algorithms (by Erik Demaine @ MIT) - https://bit.ly/2JWzd8J
- 
+
+
+Useful libraries
+------------------
+lodash-es //Lodash is a JavaScript library that makes it easier to work with collections (arrays of objects), objects, strings, etc. It also provides commonly used functionality such as the ability to debounce a function.
+
+date-fns //is a collection of functions that make it easier to work with dates in JavaScript.

@@ -30,15 +30,35 @@ switch('item'){
 }
 
 
+let, const and variable
+-----------------------
+Do not use var
+var is function scoped and hoisted
+let/const are block scoped and not hoisted 
+The Temporal Dead Zone is a fancy way of saying that variables defined with let and const cannot be accessed before they are initialized.
+
 Interfaces
 ------------
- An interface is very similar to the concept of class, except that you can only inherit it (you're not allowed to create a new instance of it directly).
-    You can check the type of an HTML Element by converting it to a string. element.toString(). You will get something similar to [object HTMLDivElement] 
-    The methods and properties on HTMLButtonElement are only available on <button>. In addition to that, all the properties and methods on HTMLElement are available because HTMLButtonElement inherits from HTMLElement.
+ An interface is very similar to the concept of class, except that you
+can only inherit it (you're not allowed to create a new instance of it directly).
+    You can check the type of an HTML Element by converting it to a
+    string. element.toString(). You will get something similar to
+    [object HTMLDivElement]
+
+    The methods and properties on HTMLButtonElement are only available
+    on <button>. In addition to that, all the properties and methods on 
+    HTMLElement are available because HTMLButtonElement inherits from
+    HTMLElement.
 
 Lexical Scope 
 --------------
-Every time you create a function() {}, JavaScript will define a new value of 'this' inside of that function. So, this.navbar returns undefined because this inside the event listener function is not the same as this in the outer function.Arrow functions are said to have a Lexical scope, which is exactly what was explained in this lesson: it means that this inside of them, is the same as the outer function.
+Every time you create a function() {}, JavaScript will define a new
+value of 'this' inside of that function. So, this.navbar returns
+undefined because this inside the event listener function is not the 
+same as this in the outer function.Arrow functions are said to have a 
+Lexical scope, it means that this inside of them, is the same as the 
+outer function.
+
 
 
 
@@ -67,6 +87,88 @@ Accessing String index
 ----------------------
 You can access the index of a character in a string using
 string[0] //retuns the first character.
+
+
+                        __________________________________  
+=====================  |               Loops            |   ==================
+=====================  |__________________________________|   ==================
+
+The for loop
+-------------
+When you find yourself needing to increment from a certain number to another one, for example, from 1 to 10 or from 0 to 5, this is where the for loop makes a lot of sense.
+
+for (let counter = 1; counter <= 10; counter++) {
+    console.log(counter);
+}
+
+Skipping numbers example
+for (let number = 0; number <= 10; number += 2) {
+    console.log(number);
+}
+
+for of Loop
+-------------
+The for...of works not only on arrays but on all data types and variables that are "iterable". Iterable means data types that you can iterate over. The list includes Strings, Arrays, NodeList (the result of document.querySelectorAll), Map, and Set.
+
+const people = ["Sam", "Alex"];
+
+for (const person of people) {
+    console.log(person);
+}
+
+benefit of for of loop
+-----------------------
+able to use break and continue keywords
+// assuming an array called numbers which contains thousands of items
+let sum = 0;
+
+for (const number of numbers) {
+    sum += number;
+    if (sum >= 500) {
+        break;
+    }
+}
+
+//continue
+const items = [1, 2, 3, 4];
+
+for (const item of items) {
+    if (item % 2 === 0) {
+        console.log("Even number, skip the iteration");
+        continue;
+    }
+    console.log("Odd number", item);
+}
+The result of the code above is:
+Odd number 1
+Even number, skip the iteration
+Odd number 3
+Even number, skip the iteration
+
+For...in loop
+--------------
+You can loop over objects with for...in.You cannot loop with .forEach as it is undefined on objects. There is no forEach method on objects. So,
+you will get an error.Note that for...in does work for arrays but it is NOT recommended.
+
+const person = {
+    id: 1,
+    name: "Alex"
+};
+
+for (const key in person) {
+    console.log(key);
+    console.log(person[key]);
+}
+
+The above example will log:
+
+"id"
+1
+"name"
+"Alex"
+
+
+
 
 
 
@@ -250,7 +352,10 @@ when sending a body to the api convert it to a json string.
 =====================  |               FETCH API          |   ==================
 =====================  |__________________________________|   ==================
 fetch('url string') //will send an ajax request and return a <promise>
-resolving the <pronise> will return a generic Response object which needs to be converted into a specific format mostly json using .json() method which is non-blocking since it returns a new <promise>. Remember to return response.json()
+resolving the <pronise> will return a generic Response object which 
+needs to be converted into a specific format mostly json using .json() 
+method which is non-blocking since it returns a new <promise>. Remember 
+to return response.json()
 
 These will not work
   const data = fetch("...").then(response => response.json());
@@ -263,9 +368,13 @@ fetch("...")
 });
 console.log(apiData);
 
-//You will end up getting undefined, that's because your code runs top to bottom and by the time console.log(apiData) runs, the promise is still pending. So the callback of the .then() has not run yet.
+//You will end up getting undefined, that's because your code runs top
+to bottom and by the time console.log(apiData) runs, the promise is 
+still pending. So the callback of the .then() has not run yet.
 
-fetch will fail for network errors and execute the catch block but not for error responses. For most APIs, you can check if the response was successful by reading response.ok.
+fetch will fail for network errors and execute the catch block but not 
+for error responses. For most APIs, you can check if the response was 
+successful by reading response.ok.
 
 fetch also takes a second parameter for sending HTTP requests.
   fetch('url string', {
@@ -300,7 +409,9 @@ default export
               OR
   export default class Helper{}
   import StringHelper from './helpers.js'
-with default exports you can re-name them when importing them.The '{}' are also removed when importing. A default and named export can be used in the same module.Therefore this is valid
+with default exports you can re-name them when importing them.The '{}' 
+are also removed when importing. A default and named export can be used 
+in the same module.Therefore this is valid
   import Helper, {votingAge} from "./helpers.js";
 
 It is possible but not recommended to rename a named export as follows
@@ -309,11 +420,60 @@ It is possible but not recommended to rename a named export as follows
 When importing from a liberary the name of the liberary is used not the file path 
 
 
+Importing from libraries 
+--------------------------
+Using the debounce function in the  lodash liberary as an example
+To debounce a function is to make it wait a certain amount of time before running again. The goal of debouncing a function is to reduce overhead by preventing it from being called several times in succession.
+
+you can import the entire lodash liberary
+  //NOT recommended 100kb
+  import _ from "lodash-es";
+
+you can import just the debounce method without loading the entire liberary
+//recommended
+import {debounce} from "lodash-es";
+
+window.addEventListener("scroll", debounce(() => {
+    console.log("User has scrolled");
+}, 30));
+
+dynamic imports
+----------------
+Whenever you import a file in your JavaScript code, the import will happen synchronously.This is the case when you use <script type="module"></script> without using a module bundler.Dynamic imports allow you to only import libraries/files when needed.
+To make an import dynamic, you have to use import() as a function.
+When you use import() as a function (dynamic import), it will return a promise.
+When the promise fulfills, it will resolve with a module object that contains the exported data.
+
+import("lodash-es").then(module => {
+    const debounce = module.default; // because debounce is a default export
+    // use debounce inside this function...
+});
+
+import("./helpers.js").then(module => {
+    const Helpers = module.default; // because Helpers is a default export
+    const getDate = module.getDate; // because getDate is a named export
+    // use Helpers and getDate inside this function...
+});
 
 
+Example of Dynamic import on condition or User Interaction
+-----------------------------------------------------------
+const button = document.querySelector("#button");
 
+button.addEventListener("click", () => {
+    import("chat-library").then(module => {
+        module.init(); // assuming the chat-library exports a named function called init.
+    });
+});
 
+Example with async/await
+-------------------------
+const button = document.querySelector("#button");
 
+button.addEventListener("click", async () => {
+    const module = await import("chat-library");
+    module.init();
+});
 
 
 
@@ -325,7 +485,8 @@ The DOM is the HTML representation of your page which you can access & manipulat
 Selecting A Single element
 --------------------------
 - document.querySelector("your-CSS-selector-here"); 
-    Selects a single item. If there are multiple items that satisfy the CSS selector that you specified, only the first one is returned. 
+  Selects a single item. If there are multiple items that satisfy the 
+  CSS selector that you specified, only the first one is returned. 
     document.getElementById('id') can be used but can only select ids
     X getElementsByTagName() //outdated should not be ued
     X getElementsByClassName() //outdated should not be used
@@ -354,31 +515,56 @@ Selecting A Single element
       const correct = document.querySelector("a.menu-link")
   </script>
 
-    The first selector will not work because a .menu-link means that there is an a element and then inside of it you should find an element with class="menu-link". This is incorrect
-    This is because the a and the element that has the class="menu-link" are the same element
-    In that case, the correct selector is a.menu-link (without spaces between them)
-    Similarly, you can select an item that has several classes, for example, 
-    .menu-link.active will select the item that has both classes menu-link and active
+    The first selector will not work because a .menu-link means that 
+    there is an a element and then inside of it you should find an 
+    element with class="menu-link". This is incorrect
+    This is because the a and the element that has the class="menu-link" 
+    are the same element
+    In that case, the correct selector is a.menu-link (without spaces 
+    between them)
+    Similarly, you can select an item that has several classes, for 
+    example, 
+    .menu-link.active will select the item that has both classes 
+    menu-link and active
 
   practice selectors: 
     https://flukeout.github.io/
 
-  document.querySelector("CSS-selector") returns an object which is an instance of HTMLElement.HTMLElement is the parent class that every single HTML element in your page inherits from. This means that every element on your page is an instance of a single class which is HTMLElement. when document.querySelector() cannot find the element you're looking for, it will return null.
+  document.querySelector("CSS-selector") returns an object which is an 
+  instance of HTMLElement.HTMLElement is the parent class that every 
+  single HTML element in your page inherits from. This means that every 
+  element on your page is an instance of a single class which is 
+  HTMLElement. when document.querySelector() cannot find the element 
+  you're looking for, it will return null.
+
 
   .textContent
   -------------
-  textContent will return the text, with all the HTML tags stripped out. You can use if() checks and optional chaining to handle null returns.
+  textContent will return the text, with all the HTML tags stripped out. 
+  You can use if() checks and optional chaining to handle null returns.
    .textContent
    
+   
   element.textContent = "This is the new text!"; 
-    this will change the text inside the element. HTML tags in the string will not render into HTML it will simply be plain text string. This makes it safe to accept user input as <script> tags will be text and not able to execute JS code.
+    this will change the text inside the element. HTML tags in the 
+    string will not render into HTML it will simply be plain text 
+    string. This makes it safe to accept user input as <script> tags 
+    will be text and not able to execute JS code.
+
 
 Selecting Multiple Elements
 ---------------------------
 - document.querySelectorAll("CSS-selector");
-    While document.querySelector() might return null (when no items are found), the document.querySelectorAll() will always return a NodeList.A NodeList is a collection of DOM elements. This means that it is a variable that contains several DOM elements.The NodeList object is similar to an array, but it's not an array document.querySelectorAll() will always return a NodeList, of 0 or more DOM elements.
+    While document.querySelector() might return null (when no items are 
+    found), the document.querySelectorAll() will always return a 
+    NodeList.A NodeList is a collection of DOM elements. This means that 
+    it is a variable that contains several DOM elements.The NodeList 
+    object is similar to an array, but it's not an array document.
+    querySelectorAll() will always return a NodeList, of 0 or more DOM 
+    elements.
 
-    NodeList
+
+    NodeList*******
   ------------
   A nodelist is not an array however:
   it has a length property
@@ -1199,3 +1385,63 @@ const init = async () => {
 }
 
 
+                        __________________________________  
+=====================  |        Package managers          |   ==================
+=====================  |__________________________________|   ==================
+npx is a command that comes with npm and lets you execute packages installed locally.
+
+Installing packages locally is recommended because it allows you to install the same package for different projects.
+
+node_modules & git
+------------------
+creating a new .gitignore file at the root of your project, and then you can write in it:
+node_modules/
+
+package-lock.json
+-----------------
+Even though the node_modules folder is ignored, you can safely delete it and then re-install all the packages by running npm install.
+That's because there's a file called package-lock.json that holds the exact versions of the packages that are installed.
+
+You should avoid using both npm and yarn in the same project due to the difference in lock files. So choose one of them and stick with it.
+
+                        __________________________________  
+=====================  |       Module Bundlers            |   ==================
+=====================  |__________________________________|   ==================
+A module bundler (sometimes called a build tool) is a tool that understands your imports and is able to efficiently merge your files together.
+Traditional script tags do not support import/export.
+<script type="module"> supports import/export for relative files.
+At the time of writing, you cannot import libraries directly in the browser.
+import {Component} from "react"; //will not work
+
+Parcel & Webpack are the most common module bundlers.
+
+
+                        __________________________________  
+=====================  |       The Window Object          |   ==================
+=====================  |__________________________________|   ==================
+The window object in JavaScript represents the current page and includes the DOM (document) as well as all the global variables and functions.
+
+IIFE 
+----
+ immediately invoked function expressions, abbreviated as IIFE.An IIFE is an anonymous function (a function without a name) that is immediately called.This was mainly used to avoid global naming conflicts wnen using the var keyword because these vaiable decalrations outside a function would be added to the window object.
+
+ (function() {
+    var name = "Alex";
+})(); // note the () the end
+
+Why is it not needed anymore?
+There are 2 reasons why this is not an issue anymore:
+This "weird" behavior does not happen when you use let or const. Which is an extra reason why you should avoid using var.
+When you load a <script type="module" src="file.js"></script> (note the type="module"), then all the variable declarations in that file will remain in that file and are not accessible from outside. Unless you export them.
+
+                        __________________________________  
+=====================  |            Closure               |   ==================
+=====================  |__________________________________|   ==================
+A closure is where an inner function has access to the outer function's variables.
+It may seem like closures is something you decide to use but in fact, closures is what you get (automatically) every time you define a function.
+A closure has three scope chains:
+1. Variables in their own scope (variables defined between the curly braces of a function).
+2. Variables defined in the outer function's scope.
+3. Variables defined in the global scope.
+
+A common example of closures is to define a variable outside a function that can then be used and changed inside the inner function.
