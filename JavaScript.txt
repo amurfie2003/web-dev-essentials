@@ -30,12 +30,13 @@ switch('item'){
 }
 
 
-let, const and variable
+let, const and var
 -----------------------
 Do not use var
 var is function scoped and hoisted
 let/const are block scoped and not hoisted 
-The Temporal Dead Zone is a fancy way of saying that variables defined with let and const cannot be accessed before they are initialized.
+The Temporal Dead Zone is a fancy way of saying that variables defined 
+with let and const cannot be accessed before they are initialized.
 
 Interfaces
 ------------
@@ -418,7 +419,10 @@ When importing from a liberary the name of the liberary is used not the file pat
 Importing from libraries 
 --------------------------
 Using the debounce function in the  lodash liberary as an example
-To debounce a function is to make it wait a certain amount of time before running again. The goal of debouncing a function is to reduce overhead by preventing it from being called several times in succession.
+To debounce a function is to make it wait a certain amount of time 
+before running again. The goal of debouncing a function is to reduce 
+overhead by preventing it from being called several times in succession.
+
 
 you can import the entire lodash liberary
   //NOT recommended 100kb
@@ -434,10 +438,14 @@ window.addEventListener("scroll", debounce(() => {
 
 dynamic imports
 ----------------
-Whenever you import a file in your JavaScript code, the import will happen synchronously.This is the case when you use <script type="module"></script> without using a module bundler.Dynamic imports allow you to only import libraries/files when needed.
+Whenever you import a file in your JavaScript code, the import will 
+happen synchronously.This is the case when you use <script 
+type="module"></script> without using a module bundler.Dynamic imports 
+allow you to only import libraries/files when needed.
 To make an import dynamic, you have to use import() as a function.
-When you use import() as a function (dynamic import), it will return a promise.
-When the promise fulfills, it will resolve with a module object that contains the exported data.
+When you use import() as a function (dynamic import), it will return a 
+promise.When the promise fulfills, it will resolve with a module object 
+that contains the exported data.
 
 import("lodash-es").then(module => {
     const debounce = module.default; // because debounce is a default export
@@ -559,14 +567,17 @@ Selecting Multiple Elements
     elements.
 
 
-    NodeList*******
+    NodeList
   ------------
   A nodelist is not an array however:
   it has a length property
   it has indexes accessible with [0] syntax
   you can use .forEach() method for iteration
 
-  you cannot call .filter on a node list. Calling .textContent will also never work as there's no textContent property on the NodeList object. It has to be called on a single element. This is why we need to loop through the node list one by one with .forEach()
+  you cannot call .filter on a node list. Calling .textContent will also 
+  never work as there's no textContent property on the NodeList object. 
+  It has to be called on a single element. This is why we need to loop 
+  through the node list one by one with .forEach()
 
       Convert NodeList to Array
       -------------------------
@@ -576,7 +587,8 @@ Selecting Multiple Elements
       Or, in a single line:
         const items = [...document.querySelectorAll("div")]; // Array
 
-      You can now use array methods for example, filter all the a links that have a textContent of Login using the following code:
+      You can now use array methods for example, filter all the a links 
+      that have a textContent of Login using the following code:
 
       const links = document.querySelectorAll("a");
       const loginLinks = [...links].filter(link => link.textContent === "Login");
@@ -602,7 +614,9 @@ Emptying elements
   
   const banner = document.querySelector("#banner");
   banner.innerHTML = ""; // OR banner.textContent = "";
-  This will empty all the content inside the div with id "banner", without removing the banner itself. So in this example, it only removes the h1 and p that are inside.
+  This will empty all the content inside the div with id "banner", 
+  without removing the banner itself. So in this example, it only 
+  removes the h1 and p that are inside.
 
 value
 -----
@@ -616,12 +630,15 @@ To read the written content of an input element, you have to use value property:
     console.log(email.textContent); // undefined (there's no closing tag)
     console.log(email.value); // text written in the email field
 
-    whenever you'd like to read the value written inside of an <input>, a <select>, or a <textarea> you have to access the value property.
+    whenever you'd like to read the value written inside of an <input>, 
+    a <select>, or a <textarea> you have to access the value property.
+
 
 
 Element ClassList
 ------------------
-The classList Object can only be accessed on one element. In the case of a node list you must loop through the list.
+The classList Object can only be accessed on one element. In the case of 
+a node list you must loop through the list.
 
 element.classList.add(className)
   const element = document.querySelector("#first-item");
@@ -644,7 +661,8 @@ element.classList.contains(className)
     const box = document.querySelector("#box");
     box.classList.contains("activated"); // true
     box.classList.contains("highlighted"); // false
-      checks if the class is present on the element. Returns true or false.
+      checks if the class is present on the element. Returns true or 
+      false.
 
 element.classList.toggle(className)
     const box = document.querySelector("#box");
@@ -684,15 +702,22 @@ element.removeAttribute(key)
     used to remove an attribute.
 
 element.setAttribute(key, value)
-    used to write a new attribute (or update the value of an old one that already exists).The 2nd argument for setAttribute() is always required.
+    used to write a new attribute (or update the value of an old one 
+    that already exists).The 2nd argument for setAttribute() is always 
+    required.
 
 element.hasAttribute(key)
-    used to check whether an attribute exists or not. The function always returns a boolean.
+    used to check whether an attribute exists or not. The function 
+    always returns a boolean.
 
 style
 -------
 Using the DOM, you can update any CSS property from JavaScript using 
-element.style.property. We do recommend that you update classes instead of styles directly when possible.It's almost the same as CSS. The only difference is that we've got to use camelCase rather than kebab case. Single-worded properties remain the same, and those that contain a dash need to be converted to camel case.
+element.style.property. We do recommend that you update classes instead 
+of styles directly when possible.It's almost the same as CSS. The only 
+difference is that we've got to use camelCase rather than kebab case. 
+Single-worded properties remain the same, and those that contain a dash 
+need to be converted to camel case.
 
 change backround color
     <div id="banner">Welcome!</div>
@@ -710,7 +735,8 @@ change backround color
 Showing/hiding element
 You could do this in 2 ways:
 Using CSS classes that can be added/removed in JavaScript with classList.
-Using JavaScript to modify the style of the element using the style property.
+Using JavaScript to modify the style of the element using the style 
+property.
 
 using the 2nd approach:
     <div id="banner">Welcome!</div>
@@ -723,7 +749,9 @@ using the 2nd approach:
     // show element by resetting its display
     banner.style.display = ""; //or "initial"
 
-    Note that initial is a CSS value that works on most CSS properties and means that the browser should use the initial value the element had. Examples:
+    Note that initial is a CSS value that works on most CSS properties 
+    and means that the browser should use the initial value the element 
+    had. Examples:
     A <div> has an initial display of block.
     A <strong> has an initial display of inline.
     An <img> has an initial display of inline-block.
@@ -733,17 +761,21 @@ using the 2nd approach:
 
 Removing element from the DOM
 -----------------------------
-If you'd like to remove an element from the DOM, you can use the .remove() method. 
+If you'd like to remove an element from the DOM, you can use the .remove
+() method. 
 
 element.remove()
     const headline = document.querySelector("#headline");
     headline.remove();
 
-    The h1#headline will be removed from the DOM. Note that this is different than emptying the contents of an element.
+    The h1#headline will be removed from the DOM. Note that this is 
+    different than emptying the contents of an element.
 
 
 document.body
-  If you need to access the <body> element of the page, instead of finding it with querySelector, you can access it with document.body directly:
+  If you need to access the <body> element of the page, instead of 
+  finding it with querySelector, you can access it with document.body 
+  directly:
 
 
 document.documentElement
@@ -753,16 +785,26 @@ Similarly for the <html> tag, you can access it directly with document.documentE
 
 Dataset
 --------
- the HTML spec recommends that developers prefix their own custom attributes with data- This avoids potential conflicts with the browser and shows that this is a custom attribute. We call this a data attribute. element.dataset returns an object containing all the data- attributes on that element.
-
+ the HTML spec recommends that developers prefix their own custom 
+ attributes with data- This avoids potential conflicts with the browser 
+ and shows that this is a custom attribute. We call this a data 
+ attribute. element.dataset returns an object containing all the 
+ data- attributes on that element.
+ 
     <-- This is recommended -->
       <form id="payment-form" data-currency="EUR">
         ...
       </form>
 
 
-  To read this data attribute, you can access the dataset object on the element:
-  Notice that the kebab-case (user-id) was automatically converted to camelCase (userId). Also, notice that the value of data attributes is always a string.This may become challenging when reading boolean values. The "false" string is true (because it's a string that contains text).
+  To read this data attribute, you can access the dataset object on the 
+  element:
+  Notice that the kebab-case (user-id) was automatically converted to 
+  camelCase (userId). Also, notice that the value of data attributes is 
+  always a string.This may become challenging when reading boolean 
+  values. The "false" string is true (because it's a string that 
+  contains text).
+
   const rememberMe = navbar.dataset.rememberMe === "true"; // false
 
     const form = document.querySelector("#payment-form");
@@ -782,7 +824,8 @@ Dataset
 
   write dataset
   --------------
-  You can also update/set a value for a data attribute by assigning it to a new value.
+  You can also update/set a value for a data attribute by assigning it 
+  to a new value.
 
   Assuming the following HTML:
   <div id="navbar" data-user-id="42"></div>
@@ -798,7 +841,9 @@ Dataset
 Traversing The DOM
 -------------------
 Avoid if possible
-You should not rely a lot on these methods as changing the HTML would then break your JavaScript code. It's recommended that you add ids and classes whenever possible.
+You should not rely a lot on these methods as changing the HTML would 
+then break your JavaScript code. It's recommended that you add ids and 
+classes whenever possible.
 
 element.parentElement 
   returns the parent element of the current element
@@ -822,24 +867,36 @@ element.closest("CSS-selector")
 
   const h1 = document.querySelector("h1");
   console.log(h1.closest(".main")); // <div class="main">...</div>
-  This will look for the closest parent that matches the selector .main that will be the first div with class="main".
+  This will look for the closest parent that matches the selector .main 
+  that will be the first div with class="main".
 
 
 Insert adjacent HTML
 --------------------
-Using innerHTML += ... to add HTML inside an element is inefficient because it recreates the entire HTML. This could also remove existing event listeners.
-Instead, when you want to add a piece of HTML, you should use the insertAdjacentHTML method. Always use backticks `` for the second argumet.This is because template strings support multiline strings whereas double quotes and single quotes don't.Another benefit of using template strings is interpolation.
-The insertAdjacentHTML method presents the same security risk as innerHTML.
-So, you should not use it if the variables you're interpolating might be coming from the user.Similarly, we've got the insertAdjacentText method that will insert text without interpreting HTML.
+Using innerHTML += ... to add HTML inside an element is inefficient 
+because it recreates the entire HTML. This could also remove existing 
+event listeners.
+Instead, when you want to add a piece of HTML, you should use the 
+insertAdjacentHTML method. Always use backticks `` for the second 
+argumet.This is because template strings support multiline strings 
+whereas double quotes and single quotes don't.Another benefit of using 
+template strings is interpolation.
+The insertAdjacentHTML method presents the same security risk as 
+innerHTML.
+So, you should not use it if the variables you're interpolating might be 
+coming from the user.Similarly, we've got the insertAdjacentText method 
+that will insert text without interpreting HTML.
+
 
 element.insertAdjacentHTML(position, htmlString)
-  will place the htmlString without having to reconstruct the remaining HTML inside the element
+  will place the htmlString without having to reconstruct the remaining 
+  HTML inside the element
 
   Append
     const positions = document.querySelector("#job-positions");
     positions.insertAdjacentHTML("beforeend", `<div class="position">2015-2020</div>`);
   This will add the html string at the end of the #job-positions element
-
+  
   Prepend
     const positions = document.querySelector("#job-positions");
     positions.insertAdjacentHTML("afterbegin", `<div class="position">2007-2009</div>`);
@@ -870,14 +927,19 @@ innerHTML vs insertAdjacentHTML
 
 Creating elements imperatively
 -------------------------------
-Instead of writing the html String <p class="text-center">Hello World</p>, you can construct it with the document.createElement() method:
+Instead of writing the html String 
+<p class="text-center">Hello World</p>, 
+you can construct it with the document.createElement() method:
 
   const paragraph = document.createElement("p");
   paragraph.classList.add("text-center");
   paragraph.textContent = "Hello World";
-  console.log(paragraph); // <p class="text-center">Hello World</p> (as an element not as a string)
+  console.log(paragraph); 
+  // <p class="text-center">Hello World</p> (as an element not as a 
+  string)
 
-  You can then use the element.appendChild() method to append it somewhere in the DOM. For example:
+  You can then use the element.appendChild() method to append it 
+  somewhere in the DOM. For example:
 
   document.body.appendChild(paragraph);
 
@@ -885,12 +947,16 @@ Instead of writing the html String <p class="text-center">Hello World</p>, you c
 Add Event Listener
 -------------------
 element.addEventListener(eventType, callback)
-  allows you to wait for an event to happen on an element. Once that event occurs the callback function will execute. Your code is running top to bottom, however, the event listener callback is scheduled into the future (when the user clicks on the button)
+  allows you to wait for an event to happen on an element. Once that 
+  event occurs the callback function will execute. Your code is running 
+  top to bottom, however, the event listener callback is scheduled into 
+  the future (when the user clicks on the button)
 
 
 Event Details
 --------------
-The event details contains information about the event that has just occurred. For example, for a click event: 
+The event details contains information about the event that has just 
+occurred. For example, for a click event: 
   x, y cordinate where the click occured 
   currentTarget etc.
 
@@ -899,13 +965,21 @@ The event details contains information about the event that has just occurred. F
   });
 
   Event currentTarget
-  The event.currentTarget refers to the element to which the event listener has been attached.If you log event to the browser console, you will see that currentTarget is null. The currentTarget is only available when the event is triggered but you won't be able to read its value later on in the dev tool console.This does not affect your code, you can still use event.currentTarget as long as you use it inside the event callback.
-
+  --------------------
+  The event.currentTarget refers to the element to which the event 
+  listener has been attached.If you log event to the browser console, 
+  you will see that currentTarget is null. The currentTarget is only 
+  available when the event is triggered but you won't be able to read 
+  its value later on in the dev tool console.This does not affect your 
+  code, you can still use event.currentTarget as long as you use it 
+  inside the event callback.
+  
     button.addEventListener("click", event => {
       console.log(event.currentTarget); // same as the variable 'button'
     });
 
-     debugger; // pause execution so that we can see event.currentTarget in the dev tools
+     debugger; // pause execution so that we can see event.currentTarget 
+     in the dev tools
 
     Always use currentTarget and not event.target
     ----------------------------------------------
@@ -918,11 +992,20 @@ The event details contains information about the event that has just occurred. F
     button.addEventListener("click", event => {
       console.log(event.target); // not recommended
     });
-    The event.target here might return either the <button> element or the <strong> element, depending on where the user clicks inside the button. While this can be useful in some scenarios when building User Interface libraries, you will rarely ever need it. This is why you should stick to event.currentTarget. In this example, it'll always return the <button> no matter where the user has clicked inside that button.
+    The event.target here might return either the <button> element or 
+    the <strong> element, depending on where the user clicks inside the 
+    button. While this can be useful in some scenarios when building 
+    User Interface libraries, you will rarely ever need it. This is why 
+    you should stick to event.currentTarget. In this example, it'll 
+    always return the <button> no matter where the user has clicked 
+    inside that button.
   
   multiple Elements
   -----------------
-  You can use button instead of event.currentTarget. This is true in this example, but, sometimes you may not have access to the button variable, which is why we prefer that you always use event.currentTarget since it always works!
+  You can use button instead of event.currentTarget. This is true in 
+  this example, but, sometimes you may not have access to the button 
+  variable, which is why we prefer that you always use event.
+  currentTarget since it always works!
     
     const buttons = document.querySelectorAll("button");
 
@@ -935,8 +1018,11 @@ The event details contains information about the event that has just occurred. F
 
 Removing Event Listener
 ------------------------
-To remove an event listner you must provide the eventType and the callback function that was used when the event listner was added, therefore you cannot use
-an anonymous function. You should not add the () here because you do not want to call handleClick right now, but, instead, reference it.
+To remove an event listner you must provide the eventType and the 
+callback function that was used when the event listner was added, 
+therefore you cannot use
+an anonymous function. You should not add the () here because you do not 
+want to call handleClick right now, but, instead, reference it.
 
   const button = document.querySelector("button");
 
@@ -951,7 +1037,8 @@ an anonymous function. You should not add the () here because you do not want to
 
 Once event listener
 --------------------
-You can add an event listner that only runs once by adding a third argument to the function signature:
+You can add an event listner that only runs once by adding a third 
+argument to the function signature:
 
   const button = document.querySelector("button");
 
@@ -963,7 +1050,9 @@ You can add an event listner that only runs once by adding a third argument to t
 
 Focus/Blur event listeners
 --------------------------
-The focus and blur events are often used in form validation. They let you know when a user focuses (put the cursor inside of it) on a textbox and when they remove the focus (blur).
+The focus and blur events are often used in form validation. They let 
+you know when a user focuses (put the cursor inside of it) on a textbox 
+and when they remove the focus (blur).
 
   <input type="text" id="name" placeholder="Enter your name">
 
@@ -981,9 +1070,15 @@ The focus and blur events are often used in form validation. They let you know w
 
 DOMContentLoaded
 -----------------
-This event fires on the document element only. It signifies that the HTML has been loaded successfully by the browser.
-This means that the browser has finished reading all of the content of your HTML file. It doesn't mean however that images and other assets have finished loading.
-This event used to be quite popular a few years ago, but nowadays, you can place your <script> at the end of the page (right before the closing tag of the body) and you won't have to worry about waiting until the DOM is ready.
+This event fires on the document element only. It signifies that the 
+HTML has been loaded successfully by the browser.
+This means that the browser has finished reading all of the content of 
+your HTML file. It doesn't mean however that images and other assets 
+have finished loading.
+This event used to be quite popular a few years ago, but nowadays, you 
+can place your <script> at the end of the page (right before the closing 
+tag of the body) and you won't have to worry about waiting until the DOM 
+is ready.
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -992,8 +1087,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 Scroll
 -------
-The scroll event triggers on any element that scrolls. It is often used on the window object.However, adding a scroll event will most likely slow down your page. Its usage is discouraged.
-
+The scroll event triggers on any element that scrolls. It is often used 
+on the window object.However, adding a scroll event will most likely 
+slow down your page. Its usage is discouraged.
 
 window.addEventListener("scroll", () => {
     console.log("page scrolled");
@@ -1001,7 +1097,8 @@ window.addEventListener("scroll", () => {
 
 change
 ------
-The change event is often used on the <select> element. It lets you know when the user has selected a new choice.
+The change event is often used on the <select> element. It lets you know 
+when the user has selected a new choice.
 
   <select id="countries">
     <option value="">Select a country</option>
@@ -1018,9 +1115,14 @@ The change event is often used on the <select> element. It lets you know when th
 
 keydown/keyup
 ------------- 
-The keydown and keyup events are used to know when the user has typed a character on the keyboard. These can be used to implement keyboard shortcuts.
-The only difference between keydown and keyup is that keydown triggers while the user starts pressing the button and before the character is being typed. On the other hand, keyup fires after the character has been typed. For most scenarios, you end up needing keyup.Notice that we can know which character was pressed by reading the event.key.
-
+The keydown and keyup events are used to know when the user has typed a 
+character on the keyboard. These can be used to implement keyboard 
+shortcuts.
+The only difference between keydown and keyup is that keydown triggers 
+while the user starts pressing the button and before the character is 
+being typed. On the other hand, keyup fires after the character has been 
+typed. For most scenarios, you end up needing keyup.Notice that we can 
+know which character was pressed by reading the event.key.
 
   document.addEventListener("keydown", event => {
     console.log(event.key);
@@ -1033,14 +1135,16 @@ The only difference between keydown and keyup is that keydown triggers while the
                         _________________________________ 
 =====================  |               FORMS             |   ==================
 =====================  |_________________________________|   ==================
-A <form> element groups several inputs together and separates multiple forms on a web page.
+A <form> element groups several inputs together and separates multiple 
+forms on a web page.
 
 Requirements for the "submit" event
 ------------------------------------
   have a form element
   have at least 1 input or textarea inside of the form
   have a button with type="submit"
-  The button could either be an <input type="submit" value="..."> or a <button type="submit">...</button>.
+  The button could either be an <input type="submit" value="..."> or a
+  <button type="submit">...</button>.
 
 Listening for the submit event
 -------------------------------
@@ -1060,7 +1164,13 @@ The addEventListener has to be on the <form>
 
 Prevent default
 ----------------
-When you submit a form, the browser will take all the values your user has written and send them to the backend of your website. However, this causes the whole page to be reloaded. That's because the browser will send the data to the same URL by default unless you specify the form's action attribute.As long as you add a submit event listener to a form, then you will need to prevent the default, or else your code will not run as the page will reload.
+When you submit a form, the browser will take all the values your user 
+has written and send them to the backend of your website. However, this 
+causes the whole page to be reloaded. That's because the browser will 
+send the data to the same URL by default unless you specify the form's 
+action attribute.As long as you add a submit event listener to a form, 
+then you will need to prevent the default, or else your code will not 
+run as the page will reload.
 
   form.addEventListener("submit", event => {
     event.preventDefault();
@@ -1070,8 +1180,11 @@ When you submit a form, the browser will take all the values your user has writt
 
 User input for form submission
 -------------------------------
-Always make sure to access the value property inside the submit event to get the value when the user submitted the form. DO NOT access it outside the submit event 
-as the value will be empty or incomplete.You want to get the value on submision.
+Always make sure to access the value property inside the submit event to 
+get the value when the user submitted the form. DO NOT access it outside 
+the submit event 
+as the value will be empty or incomplete.You want to get the value on 
+submision.
 
   <form id="weather-form">
     <input type="text" id="city" placeholder="Enter your city">
@@ -1085,7 +1198,8 @@ as the value will be empty or incomplete.You want to get the value on submision.
       event.preventDefault();
 
       // read the user's city and pass it to getWeatherInfo()
-      console.log(city.value); // see in the console to make sure it's working
+      console.log(city.value); // see in the console to make sure it's 
+      working
       getWeatherInfo(city.value);
   });
 
@@ -1149,8 +1263,14 @@ const sayHello = () => {
 
 const button = document.querySelector("button");
 button.addEventListener("click", sayHello);
-  This allows us to define the function, and then reference it in the addEventListener. Notice how we have to remove the () after sayHello in this example, because we are not calling the method sayHello right now. But rather we're asking the browser to call the method sayHello, when the user clicks on the button.
-  When a function takes a callback you can define the call back directly or define it elsewhere and then reference it in the function arguments. 
+  This allows us to define the function, and then reference it in the 
+  addEventListener. Notice how we have to remove the () after sayHello 
+  in this example, because we are not calling the method sayHello right 
+  now. But rather we're asking the browser to call the method sayHello, 
+  when the user clicks on the button.
+  When a function takes a callback you can define the call back directly 
+  or define it elsewhere and then reference it in the function 
+  arguments. 
 
     const registerUser = (user, callback) => {
       if (!user.id) {
@@ -1203,7 +1323,10 @@ try{
 
 Throw exceptions
 ------------------
-It's also possible for you to throw an exception manually, let's say you're writing a sayHello function that takes a name parameter. And, you do not want to allow other developers to ever call this function without a name parameter.
+It's also possible for you to throw an exception manually, let's say 
+you're writing a sayHello function that takes a name parameter. And, you 
+do not want to allow other developers to ever call this function without 
+a name parameter.
 
   const sayHello = name => {
     if (!name) {
@@ -1238,7 +1361,11 @@ Code after
 =====================  |        Async functions           |   ==================
 =====================  |__________________________________|   ==================
 
-The async keyword can be placed in front of a function definition. This will make the function return a promise automatically. the async keyword wraps the return value of the function with a promise. It's very important to know that when a function is async it means that it will always return a promise.
+The async keyword can be placed in front of a function definition. This 
+will make the function return a promise automatically. the async keyword 
+wraps the return value of the function with a promise. It's very 
+important to know that when a function is async it means that it will 
+always return a promise.
 
   // NOT an async function. Does NOT return a promise
   const getNumber = () => {
@@ -1287,7 +1414,10 @@ user.isAdmin("admin").then(value => {
 
 The await keyword
 -----------------
-The await keyword can only be used inside async functions.The await keyword "pauses" the execution of a function, until the promise resolves. And, then, it will automatically resolve it (call .then() on it), and give you the result which you can save in a variable.
+The await keyword can only be used inside async functions.The await 
+keyword "pauses" the execution of a function, until the promise 
+resolves. And, then, it will automatically resolve it (call .then() on 
+it), and give you the result which you can save in a variable.
 
 This allows you to go from this code:
 
@@ -1300,18 +1430,29 @@ to:
 const result = await getValue();
 console.log(result); // 42
 
-The only expression that you can await is a promise (or an object that has a .then() method). This is because await will resolve the promise for you, so it will call .then() on it behind the scenes.
+The only expression that you can await is a promise (or an object that 
+has a .then() method). This is because await will resolve the promise 
+for you, so it will call .then() on it behind the scenes.
 Why does await require an async function?
-Whenever you use await, it means that you're working with a promise that needs to be resolved somewhere in the future. This means that the current function cannot return a value immediately and has to return a promise itself.
+Whenever you use await, it means that you're working with a promise that 
+needs to be resolved somewhere in the future. This means that the 
+current function cannot return a value immediately and has to return a 
+promise itself.
 
 Top level await
 ----------------
-await can only be used inside functions that are async. This is always the case.
-However, if you open your browser's Dev Tools, you can write await directly (as long as you're not inside a function). This is supported on all major browsers' Dev Tools as it makes your life easier.
+await can only be used inside functions that are async. This is always 
+the case.
+However, if you open your browser's Dev Tools, you can write await 
+directly (as long as you're not inside a function). This is supported on 
+all major browsers' Dev Tools as it makes your life easier.
 
 Downsides of async/await
 -------------------------
-Though not common, there is a downside of using async/await if you're not careful in remembering that the await keyword is pausing the execution of that function until the promise has been resolved (or rejected).
+Though not common, there is a downside of using async/await if you're 
+not careful in remembering that the await keyword is pausing the 
+execution of that function until the promise has been resolved (or 
+rejected).
 
 .catch for promises VS. try...catch for async/await
 -----------------------------------------------------
@@ -1320,8 +1461,10 @@ On the other hand, try...catch only works when you're using async/await.
 
 Unexpectedly silencing errors
 -----------------------------
-If the promise being awaited moves from pending to rejected, the error message will be thrown as an error (using the throw operator).
-You can recover from such an error by wrapping the await call with a try...catch
+If the promise being awaited moves from pending to rejected, the error 
+message will be thrown as an error (using the throw operator).
+You can recover from such an error by wrapping the await call with a 
+try...catch
 
 
 const getUnreadCount = async () => {
@@ -1335,8 +1478,10 @@ const getUnreadCount = async () => {
     }
 } 
 
-The code above will give you an unexpected result. It will always fulfill successfully.
-This is because return inside an async function will resolve the promise successfully (even if the return was inside a catch block).
+The code above will give you an unexpected result. It will always 
+fulfill successfully.
+This is because return inside an async function will resolve the promise 
+successfully (even if the return was inside a catch block).
 
 const getUnreadCount = async () => {
     try {
@@ -1351,7 +1496,9 @@ const getUnreadCount = async () => {
 
 Where should I wrap with try...catch?
 -------------------------------------
-If you'd like to do the same handling for all errors, then you should wrap the fetch call directly. Otherwise, wrapping the usage will allow you to handle errors on a case-by-case basis.
+If you'd like to do the same handling for all errors, then you should 
+wrap the fetch call directly. Otherwise, wrapping the usage will allow 
+you to handle errors on a case-by-case basis.
 
 finally
 -------
@@ -1383,29 +1530,39 @@ const init = async () => {
                         __________________________________  
 =====================  |        Package managers          |   ==================
 =====================  |__________________________________|   ==================
-npx is a command that comes with npm and lets you execute packages installed locally.
+npx is a command that comes with npm and lets you execute packages 
+installed locally.
 
-Installing packages locally is recommended because it allows you to install the same package for different projects.
+Installing packages locally is recommended because it allows you to 
+install the same package for different projects.
 
 node_modules & git
 ------------------
-creating a new .gitignore file at the root of your project, and then you can write in it:
+creating a new .gitignore file at the root of your project, and then you 
+can write in it:
 node_modules/
 
 package-lock.json
 -----------------
-Even though the node_modules folder is ignored, you can safely delete it and then re-install all the packages by running npm install.
-That's because there's a file called package-lock.json that holds the exact versions of the packages that are installed.
+Even though the node_modules folder is ignored, you can safely delete it 
+and then re-install all the packages by running npm install.
+That's because there's a file called package-lock.json that holds the 
+exact versions of the packages that are installed.
 
-You should avoid using both npm and yarn in the same project due to the difference in lock files. So choose one of them and stick with it.
+You should avoid using both npm and yarn in the same project due to the 
+difference in lock files. So choose one of them and stick with it.
 
                         __________________________________  
 =====================  |       Module Bundlers            |   ==================
 =====================  |__________________________________|   ==================
-A module bundler (sometimes called a build tool) is a tool that understands your imports and is able to efficiently merge your files together.
+A module bundler (sometimes called a build tool) is a tool that 
+understands your imports and is able to efficiently merge your files 
+together.
 Traditional script tags do not support import/export.
 <script type="module"> supports import/export for relative files.
-At the time of writing, you cannot import libraries directly in the browser.
+At the time of writing, you cannot import libraries directly in the 
+browser.
+
 import {Component} from "react"; //will not work
 
 Parcel & Webpack are the most common module bundlers.
@@ -1414,11 +1571,16 @@ Parcel & Webpack are the most common module bundlers.
                         __________________________________  
 =====================  |       The Window Object          |   ==================
 =====================  |__________________________________|   ==================
-The window object in JavaScript represents the current page and includes the DOM (document) as well as all the global variables and functions.
+The window object in JavaScript represents the current page and includes 
+the DOM (document) as well as all the global variables and functions.
 
 IIFE 
 ----
- immediately invoked function expressions, abbreviated as IIFE.An IIFE is an anonymous function (a function without a name) that is immediately called.This was mainly used to avoid global naming conflicts wnen using the var keyword because these vaiable decalrations outside a function would be added to the window object.
+ immediately invoked function expressions, abbreviated as IIFE.An IIFE 
+ is an anonymous function (a function without a name) that is 
+ immediately called.This was mainly used to avoid global naming 
+ conflicts wnen using the var keyword because these vaiable decalrations 
+ outside a function would be added to the window object.
 
  (function() {
     var name = "Alex";
@@ -1426,20 +1588,29 @@ IIFE
 
 Why is it not needed anymore?
 There are 2 reasons why this is not an issue anymore:
-This "weird" behavior does not happen when you use let or const. Which is an extra reason why you should avoid using var.
-When you load a <script type="module" src="file.js"></script> (note the type="module"), then all the variable declarations in that file will remain in that file and are not accessible from outside. Unless you export them.
+This "weird" behavior does not happen when you use let or const. Which 
+is an extra reason why you should avoid using var.
+When you load a <script type="module" src="file.js"></script> (note the 
+type="module"), then all the variable declarations in that file will 
+remain in that file and are not accessible from outside. Unless you 
+export them.
 
                         __________________________________  
 =====================  |            Closure               |   ==================
 =====================  |__________________________________|   ==================
-A closure is where an inner function has access to the outer function's variables.
-It may seem like closures is something you decide to use but in fact, closures is what you get (automatically) every time you define a function.
+A closure is where an inner function has access to the outer function's 
+variables.It may seem like closures is something you decide to use but 
+in fact, closures is what you get (automatically) every time you define 
+a function.
+
 A closure has three scope chains:
-1. Variables in their own scope (variables defined between the curly braces of a function).
+1. Variables in their own scope (variables defined between the curly 
+braces of a function).
 2. Variables defined in the outer function's scope.
 3. Variables defined in the global scope.
 
-A common example of closures is to define a variable outside a function that can then be used and changed inside the inner function.
+A common example of closures is to define a variable outside a function 
+that can then be used and changed inside the inner function.
 
 
                         __________________________________  
@@ -1459,8 +1630,7 @@ interpreter keeps track of the code that you're running.
 Callback queue
 ---------------
 Web APIs, such as setTimeout, do not get directly pushed into the call 
-stack
-Instead, they go through the callback queue.
+stack.Instead, they go through the callback queue.
 When the call stack is empty, the browser takes a task from the callback 
 queue and executes it.
 
