@@ -95,7 +95,9 @@ string[0] //retuns the first character.
 
 The for loop
 -------------
-When you find yourself needing to increment from a certain number to another one, for example, from 1 to 10 or from 0 to 5, this is where the for loop makes a lot of sense.
+When you find yourself needing to increment from a certain number to
+another one, for example, from 1 to 10 or from 0 to 5, this is where the 
+for loop makes a lot of sense.
 
 for (let counter = 1; counter <= 10; counter++) {
     console.log(counter);
@@ -108,7 +110,10 @@ for (let number = 0; number <= 10; number += 2) {
 
 for of Loop
 -------------
-The for...of works not only on arrays but on all data types and variables that are "iterable". Iterable means data types that you can iterate over. The list includes Strings, Arrays, NodeList (the result of document.querySelectorAll), Map, and Set.
+The for...of works not only on arrays but on all data types and 
+variables that are "iterable". Iterable means data types that you can 
+iterate over. The list includes Strings, Arrays, NodeList (the result of 
+document.querySelectorAll), Map, and Set.
 
 const people = ["Sam", "Alex"];
 
@@ -147,8 +152,10 @@ Even number, skip the iteration
 
 For...in loop
 --------------
-You can loop over objects with for...in.You cannot loop with .forEach as it is undefined on objects. There is no forEach method on objects. So,
-you will get an error.Note that for...in does work for arrays but it is NOT recommended.
+You can loop over objects with for...in.You cannot loop with .forEach as 
+it is undefined on objects. There is no forEach method on objects. So,
+you will get an error.Note that for...in does work for arrays but it is 
+NOT recommended.
 
 const person = {
     id: 1,
@@ -166,12 +173,6 @@ The above example will log:
 1
 "name"
 "Alex"
-
-
-
-
-
-
 
 
 
@@ -201,12 +202,6 @@ undefined returned for index that does'nt exist
 myArry[0] = 'new item' will update array at that index
 for (const fruit of fruits)//iterate array for-of-loop
 ======================================
-
-
-
-
-
-
 
 
 
@@ -1445,3 +1440,30 @@ A closure has three scope chains:
 3. Variables defined in the global scope.
 
 A common example of closures is to define a variable outside a function that can then be used and changed inside the inner function.
+
+
+                        __________________________________  
+=====================  |               The Event Loop     |   ==================
+=====================  |__________________________________|   ==================
+JavaScript is single-threaded, which means that it can process 
+instructions one instruction at a time.
+It is possible to spawn a Web Worker which allows you to run 
+computations in parallel, but that has specific use cases and you cannot 
+access the DOM from the Web Worker.
+
+Call Stack
+-----------
+You can think of the call stack as an array where the JavaScript 
+interpreter keeps track of the code that you're running. 
+
+Callback queue
+---------------
+Web APIs, such as setTimeout, do not get directly pushed into the call 
+stack
+Instead, they go through the callback queue.
+When the call stack is empty, the browser takes a task from the callback 
+queue and executes it.
+
+The event loop is a task that keeps checking if there are any items in 
+the callback queue and forwards them to the call stack but only when the 
+call stack is empty.
