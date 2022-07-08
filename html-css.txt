@@ -1,17 +1,267 @@
                         __________________________________  
 =====================  |               HTML               |   ==================
 =====================  |__________________________________|   ==================
+
+
+
+                        __________________________________  
+=====================  |          Semantic HTML           |   ==================
+=====================  |__________________________________|   ==================
+Writing semantic HTML means giving meaning to the elements we use. It 
+allows you to focus on the element's purpose rather than its appearance.
+You should not use an HTML element based on its appearance but rather its 
+meaning/purpose/role. This is what we mean by semantic HTML.
+
+
+                        __________________________________  
+=====================  |           Headings               |   ==================
+=====================  |__________________________________|   ==================
+h1 -  is used to represent the highest-level, most important topic of the 
+current web page. Generally you should only have one h1 per page.
+
+h2 - h2 element is used to define the titles of the major sections of a 
+webpage. The h2 element is a "sub-section" of the h1 element on the page.
+it's very important to use h1 and h2 based on their hierarchy in the 
+document rather than their font size.
+
+H3, h4, h5, and h6 - 
+the h3 element is used as a "sub-section" of an h2 element
+the h4 element is used as a "sub-section" of an h3 element
+the h5 element is used as a "sub-section" of an h4 element
+the h6 element is used as a "sub-section" of an h5 element
+
+It's important to avoid skipping heading levels. If you have an h1, the 
+following heading level under it should be h2. You should not skip h2 and 
+jump directly to h3.
+Headings have an important role in SEO as you are communicating to the 
+search engine the page's outline and the most important topic.
+
+                        __________________________________  
+=====================  |          Accessibility           |   ==================
+=====================  |__________________________________|   ==================
+
+Accessibility can be viewed as the "ability to access" and benefit from 
+some system. The concept focuses on enabling access for people with 
+disabilities or enabling access through assistive technology.
+A screen reader is a software that has commands to jump between headings 
+or specific landmark regions quickly.
+A survey of screen reader users concludes that they usually navigate an 
+unfamiliar page by exploring the headings.
+
+Axe is an automated accessibility testing tool. It's available as a 
+browser extension (Chrome, Firefox, and Edge at the moment), Command-Line 
+tool, JavaScript SDK library, and more.
+
+
+                        __________________________________  
+=====================  |             Attributes           |   ==================
+=====================  |__________________________________|   ==================
+Every HTML element can have one or more key="value" pairs that allow you 
+to customize or configure the element. These key="value" pairs are called 
+attributes.
+example:
+  <html lang="en">
+  </html>
+The lang attribute on the html element also has accessibility implication.Axe will thow an error if it is missing.
+
 Attributes - key/value
 href="#myid" - link to id on page
 
+
+                        __________________________________  
+=====================  |         HTML boilerplate         |   ==================
+=====================  |__________________________________|   ==================
+
+<!DOCTYPE html>
+It specifies the version of HTML that you want the browser to use when 
+rendering your page.This is very important and should not be forgotten.
+This specific doctype refers to the latest HTML specification. You should 
+not use any other doctype.
+
+The html element, used with the opening <html> tag and closing tag </html> in the boilerplate, is the page's root element. This is the highest element because all other elements on the page will be a descendant of this element.This element is allowed to have two specific child elements,
+head and body.
+
+The head element contains information and data that is meant to be 
+processed by machines (such as browsers, search engines, and crawlers 
+used by social networks).The contents in the head are not visible on the 
+page. However, they may affect how the page looks like. For example, one 
+of the content of the head allows for the responsive mode to be enabled
+
+The body element is the element that contains all the content of your 
+HTML page.This is where you will write the headings, paragraphs, place 
+the images, the videos, and many more.Everything you place here is 
+visible (unless manually hidden) to the user.
+
+The meta element is a generic element used to provide additional data and 
+details about the current web page. For example, this could be the image 
+used when this web page is shared on social media, and the behavior of 
+the web page when opened on a mobile device.
+
+the meta viewport:
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+The above meta viewport has to be used for a website to feel at home on a 
+mobile screen. It asks the browser to represent the web page's width 
+according to the current device (example: mobile phone)'s width.
+We always add this meta viewport element in modern HTML because we're not 
+coding a website for a specific device width as we used to do in the 
+early 2000s. Instead, we're building a website that works on every screen 
+size.
+
+Best practices for title pages
+------------------------------
+https://developers.google.com/search/docs/advanced/appearance/title-link?hl=en&visit_id=637679360350624111-3799840888&rd=1#page-titles
+
+ 
+
+                        __________________________________  
+=====================  |       Blankspace & New lines     |   ==================
+=====================  |__________________________________|   ==================
+If you have more than one blank space, it will be rendered as one blank 
+space in the browser.
+
+New line
+---------
+The line break element produces a new line (also called carriage-return).
+<br>
+example
+---------
+Street name<br>
+City<br>
+Postcode, Country
+
+
+
+                        __________________________________  
+=====================  |            Paragraphs            |   ==================
+=====================  |__________________________________|   ==================
+<p>Text here</p>
+Screen readers announce the p element as a paragraph. Breaking up content 
+into paragraphs helps make a page more accessible.You will notice that a 
+paragraph always starts on a new line. Also, browsers will automatically 
+add some space that acts as a separation before and after the paragraph. 
+You cannot nest a paragraph inside another one.While you don't technically need to wrap text with a p element, we recommend that you do. This helps you write semantic and accessible code.
+
+Paragraphs and line breaks
+---------------------------
+//correct
+<p>
+    Welcome to my blog.
+</p>
+<p>
+    Here you will learn about HTML and CSS.
+</p>
+
+//Incorrect
+<p>
+    Welcome to my blog.
+    <br>
+    <br>
+    Here you will learn about HTML and CSS.
+</p>   
+
+ The br element should not be used to separate paragraphs or two elements. Instead, it should only be used to create a new line within the same sentence or context.      
          
-         
-         
-         
-         
-         
-         
-         
+
+                        __________________________________  
+=====================  |             Lists                |   ==================
+=====================  |__________________________________|   ==================
+
+The ol and ul elements
+-----------------------
+- The ol (ordered list) element represents a list of items where the 
+items have been intentionally ordered. Changing the order would change 
+the meaning of the list (most likely breaking the original meaning).
+
+<ol>
+    <li>Heat the pasta.</li>
+    <li>Pour the sauce on the cooked pasta.</li>
+</ol>
+
+The li element (inside an ol) element represents a list item.
+
+-Similar to the ol element, we've got an unordered list (ul) element.
+The ul element represents a list of items where the order of the items 
+does not matter. Changing the order would not change the meaning of the 
+document.
+
+<ul>
+    <li>Croatia</li>
+    <li>Zambia</li>
+    <li>The Netherlands</li>
+    <li>Japan</li>
+</ul>
+
+As you can see, the li (list item) element is used inside either an ol or 
+a ul element.
+It does not have a meaning by itself, so it must be written inside an ol 
+or ul.
+
+emmet - ol>li
+**************
+<ol>
+  <li></li>
+</ol>
+
+The ol and ul elements can be nested several times as well as mixed 
+together.when nesting lists, make sure that the nested list goes inside 
+an li element.Paragraphs cannot contain lists.   
+
+<ol>
+    <li>Introduction</li>
+    <li>
+        Procedures
+        <ol>
+            <li>Hypothesis</li>
+            <li>Test group</li>
+            <li>Results</li>
+        </ol>
+    </li>
+    <li>Conclusions</li>
+</ol>
+
+emmet - ol>li*3
+****************
+<ol>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+
+
+                        __________________________________  
+=====================  |             HTML Validation      |   ==================
+=====================  |__________________________________|   ==================
+
+W3C HTML validator
+https://validator.w3.org/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
          
          
                         __________________________________  

@@ -1,0 +1,63 @@
+                        __________________________________  
+=====================  |                Nodes             |   ==================
+=====================  |__________________________________|   ==================
+
+An individual node contains data and links to other nodes.
+They are the building blocks for many of the data structures.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        __________________________________  
+=====================  |    Algorithm Time Complexity     |   ==================
+=====================  |__________________________________|   ==================
+
+-The time complexity of an algorithm is measured using Big O notaion.
+
+O(1) => Constant time (best possible case)
+O(n^log n) => logorithmic time
+O(n) => linear time
+O(n^2) => quadratic time
+O(2^n) => exponential time
+
+
+Asymptotic Analysis
+1. Define the function 
+    count the number of expression executions.
+
+2. Find the fastest growing term 
+
+3. Remove the coefficient

@@ -67,8 +67,14 @@ outer function.
                         __________________________________  
 =====================  |               STRINGS            |   ==================
 =====================  |__________________________________|   ==================
-toUpperCase() //transform string to uppercase
-toLowerCase() //transform string to lowercase
+toUpperCase()
+This will return a new string that has all of its characters in upper case:
+"red".toUpperCase(); //RED
+
+
+toLowerCase()
+This will return a new string that has all of its characters in lower case
+"BLUE".toLowerCase(); // "blue";
 
 substring() 
   someString.substring(indexStart, indexEnd)
