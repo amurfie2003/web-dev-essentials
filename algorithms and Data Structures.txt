@@ -2,8 +2,14 @@
 =====================  |                Nodes             |   ==================
 =====================  |__________________________________|   ==================
 
-An individual node contains data and links to other nodes.
+An individual node contains data and links to other nodes the data can be of different types depending on the language.
 They are the building blocks for many of the data structures.
+The link or links within the node are sometimes referred to as pointers. 
+This is because they “point” to another node.Nodes that have no links 
+pointing to them except for the head node, are considered “orphaned. If a 
+node has no links, or they are all null, you have reached the end of the 
+path you were following.
+
 
 
 

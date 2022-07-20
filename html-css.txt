@@ -160,7 +160,17 @@ Paragraphs and line breaks
 </p>   
 
  The br element should not be used to separate paragraphs or two elements. Instead, it should only be used to create a new line within the same sentence or context.      
-         
+
+
+                        __________________________________  
+=====================  |             Span                |   ==================
+=====================  |__________________________________|   ==================
+<span> contains short pieces of text or other HTML. They are used to 
+separate small pieces of content that are on the same line as other 
+content.It’s best to use a <span> element when you want to target a 
+specific piece of content that is inline, or on the same line as other 
+text. If you want to divide your content into blocks, it’s better to use 
+a <div>.
 
                         __________________________________  
 =====================  |             Lists                |   ==================
@@ -228,6 +238,13 @@ emmet - ol>li*3
 </ol>
 
 
+                        __________________________________  
+=====================  |                DIVS              |   ==================
+=====================  |__________________________________|   ==================
+<div> is short for “division” or a container that divides the page into 
+sections. <div>s can contain any text or other HTML elements, such as
+ links, images, or videos. 
+
 
                         __________________________________  
 =====================  |             HTML Validation      |   ==================
@@ -235,24 +252,83 @@ emmet - ol>li*3
 
 W3C HTML validator
 https://validator.w3.org/
+writing valid HTML does not affect your SEO
+Modern browsers never crash because of invalid HTML.
+When using the validator always correct opening/closing tag issues first as other errors might be related to it.
 
 
 
+                        __________________________________  
+=====================  |             Landmark             |   ==================
+=====================  |__________________________________|   ==================
+Landmark elements aim to break the page into several recognizable areas.
+Accessibility benefit: A user can use accessibility software such as a 
+screen reader to navigate and understand these landmarks.
+Semantics benefit: Machines such as search engines can better understand your page and how your website is linked when you have content inside 
+landmarks.
+
+-The main element is used to represent the dominant contents of the page.
+ It contains the content related to the main topic of the page.
+
+-The header element represents the content used to introduce the web 
+page. This usually contains a heading element (such as h1), a logo, and 
+some navigational elements (covered later).
+
+-The footer element represents the footer of the page. The word footer 
+here does not necessarily mean that the element is visually placed at the 
+bottom of the page. Instead, it contains data usually represented towards 
+the end of a document. Such as links to related documents, copyright 
+data, additional information, etc.
+
+                        __________________________________  
+=====================  |    The strong and b elements     |   ==================
+=====================  |__________________________________|   ==================
+The strong element is used to represent content that has strong 
+importance, seriousness, or urgency. This is usually seen in relation to its surrounding.
+
+The strong element is represented by most browsers as bold text. But, 
+this should not be the reason why it's used.
+
+The b element (bring attention to) is used to draw attention to some 
+content without giving it more importance, seriousness, or urgency.
+
+The differences between strong and b are subtle. It all comes down to 
+whether you want to give importance to the content (strong) or not (b).
+As long as you're not overusing the strong and b tags, you can usually 
+use strong if you're in doubt.
 
 
+                        __________________________________  
+=====================  |               Image              |   ==================
+=====================  |__________________________________|   ==================
 
+<img src="image-location.jpg" />
+The <img> tag has a required attribute called src. The src attribute must
+be set to the image’s source, or the location of the image.
 
+alt attributes
+--------------
+The alt attribute, which means alternative text, brings meaning to the 
+images on our sites. The alt attribute can be added to the image tag just 
+like the src attribute. The value of alt should be a description of the 
+image.When you include the alt attribute, the screen reading software can 
+read the image’s description out loud to the visually impaired user.
+If the image on the web page is not one that conveys any meaningful 
+information to a user (visually impaired or otherwise), the alt attribute 
+should be left empty.
 
+                        __________________________________  
+=====================  |               Video              |   ==================
+=====================  |__________________________________|   ==================
+<video src="myVideo.mp4" width="320" height="240" controls>
+  Video not supported
+</video>
+In addition to images, HTML also supports displaying videos. Like the 
+<img> element, the <video> element requires a src attribute with a link 
+to the video source.
 
-
-
-
-
-
-
-
-
-
+The text, Video not supported, between the opening and closing video tags 
+will only be displayed if the browser is unable to load the video.
 
 
 
