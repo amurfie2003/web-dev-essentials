@@ -331,8 +331,18 @@ The text, Video not supported, between the opening and closing video tags
 will only be displayed if the browser is unable to load the video.
 
 
+                        __________________________________  
+=====================  |               anchor             |   ==================
+=====================  |__________________________________|   ==================
 
+<a href="https://en.wikipedia.org/wiki/Brown_bear" target="_blank">The Brown Bear</a>
 
+The anchor tag allows one webpage to link to another webpage or an external website by using the 'href' attribute.
+
+target attribute
+----------------
+The target attribute specifies how a link should open.
+target="_blank" attribute, when used in modern browsers, will open new websites in a new tab.
 
 
 
