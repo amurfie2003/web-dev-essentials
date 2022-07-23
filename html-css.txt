@@ -344,10 +344,56 @@ target attribute
 The target attribute specifies how a link should open.
 target="_blank" attribute, when used in modern browsers, will open new websites in a new tab.
 
+relative path vs absolute path
+-------------------------------
+A relative path is a filename that shows the path to a local file (a file 
+on the same website, such as ./index.html) versus an absolute path (a 
+full URL, like https://www.codecademy.com/learn/learn-html
+The ./ in ./index.html tells the browser to look for the file in the 
+current folder.
+
+linking to sections of a page
+-----------------------------
+To link to a specific point on a page give the element an id the usedthat id in the href of the <a> tag.
+
+<p id="top">This is the top of the page!</p>
+<h1 id="bottom">This is the bottom! </h1>
+
+<ol>
+  <li><a href="#top">Top</a></li>
+  <li><a href="#bottom">Bottom</a></li>
+</ol>
+
+
+                        __________________________________  
+=====================  |               Tables             |   ==================
+=====================  |__________________________________|   ==================
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
          
          
                         __________________________________  
